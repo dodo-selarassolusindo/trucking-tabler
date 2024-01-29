@@ -29,8 +29,8 @@
         }
         </style>
     </head>
-<body  class=" layout-fluid">
-    <script src="./dist/js/demo-theme.min.js?1684106062"></script>
+<body class=" layout-fluid">
+    <script src="<?= base_url() ?>assets/tabler/js/demo-theme.min.js?1684106062"></script>
     <div class="page">
         <!-- Navbar -->
         <header class="navbar navbar-expand-md d-print-none" >
@@ -40,7 +40,7 @@
                 </button>
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
                     <a href=".">
-                        <img src="./static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                        <img src="<?= base_url() ?>assets/tabler/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
                     </a>
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
@@ -2638,65 +2638,65 @@
                         });
                         // @formatter:on
                         </script>
-                        <script>
-                        // @formatter:off
-                        document.addEventListener("DOMContentLoaded", function () {
-                            window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-5'), {
-                                chart: {
-                                    type: "line",
-                                    fontFamily: 'inherit',
-                                    height: 24,
-                                    animations: {
-                                        enabled: false
-                                    },
-                                    sparkline: {
-                                        enabled: true
-                                    },
-                                },
-                                tooltip: {
-                                    enabled: false,
-                                },
-                                stroke: {
-                                    width: 2,
-                                    lineCap: "round",
-                                },
-                                series: [{
-                                    color: tabler.getColor("primary"),
-                                    data: [2, 11, 15, 14, 21, 20, 8, 23, 18, 14]
-                                }],
-                            })).render();
-                        });
-                        // @formatter:on
-                        </script>
-                        <script>
-                        // @formatter:off
-                        document.addEventListener("DOMContentLoaded", function () {
-                            window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-6'), {
-                                chart: {
-                                    type: "line",
-                                    fontFamily: 'inherit',
-                                    height: 24,
-                                    animations: {
-                                        enabled: false
-                                    },
-                                    sparkline: {
-                                        enabled: true
-                                    },
-                                },
-                                tooltip: {
-                                    enabled: false,
-                                },
-                                stroke: {
-                                    width: 2,
-                                    lineCap: "round",
-                                },
-                                series: [{
-                                    color: tabler.getColor("primary"),
-                                    data: [22, 12, 7, 14, 3, 21, 8, 23, 18, 14]
-                                }],
-                            })).render();
-                        });
-                        // @formatter:on
-                        </script>
-                    </body>
-                    </html>
+        <script>
+        // @formatter:off
+        document.addEventListener("DOMContentLoaded", function () {
+            window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-5'), {
+                chart: {
+                    type: "line",
+                    fontFamily: 'inherit',
+                    height: 24,
+                    animations: {
+                        enabled: false
+                    },
+                    sparkline: {
+                        enabled: true
+                    },
+                },
+                tooltip: {
+                    enabled: false,
+                },
+                stroke: {
+                    width: 2,
+                    lineCap: "round",
+                },
+                series: [{
+                    color: tabler.getColor("primary"),
+                    data: [2, 11, 15, 14, 21, 20, 8, 23, 18, 14]
+                }],
+            })).render();
+        });
+        // @formatter:on
+        </script>
+        <script>
+        // @formatter:off
+        document.addEventListener("DOMContentLoaded", function () {
+            window.ApexCharts && (new ApexCharts(document.getElementById('sparkline-bounce-rate-6'), {
+                chart: {
+                    type: "line",
+                    fontFamily: 'inherit',
+                    height: 24,
+                    animations: {
+                        enabled: false
+                    },
+                    sparkline: {
+                        enabled: true
+                    },
+                },
+                tooltip: {
+                    enabled: false,
+                },
+                stroke: {
+                    width: 2,
+                    lineCap: "round",
+                },
+                series: [{
+                    color: tabler.getColor("primary"),
+                    data: [22, 12, 7, 14, 3, 21, 8, 23, 18, 14]
+                }],
+            })).render();
+        });
+        // @formatter:on
+        </script>
+    </body>
+</html>
