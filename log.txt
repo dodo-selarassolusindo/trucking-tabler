@@ -1,4 +1,5 @@
 daftar group user
 - anonymous (guest)
 - member
+- premium
 - administrator
