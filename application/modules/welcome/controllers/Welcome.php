@@ -18,6 +18,17 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
+
+	// public function __construct()
+	// {
+	// 	parent::__construct();
+	// 	if (!$this->ion_auth->logged_in())
+	// 	{
+	// 		// redirect them to the login page
+	// 		redirect('auth/login', 'refresh');
+	// 	}
+	// }
+
 	public function index()
 	{
 		$this->load->view('welcome_message');
