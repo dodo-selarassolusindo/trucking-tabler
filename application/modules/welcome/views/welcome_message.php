@@ -33,6 +33,7 @@
 
         <script src="<?= base_url() ?>assets/tabler/js/demo-theme.min.js?1684106062"></script>
 
+        <!-- Page -->
         <div class="page">
 
             <!-- Navbar -->
@@ -178,6 +179,7 @@
                 </div>
             </header>
 
+            <!-- Menu -->
             <header class="navbar-expand-md">
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <div class="navbar">
@@ -591,6 +593,7 @@
                 </div>
             </header>
 
+            <!-- Page Wrapper -->
             <div class="page-wrapper">
 
                 <!-- Page header -->
@@ -1978,6 +1981,7 @@
                     </div>
                 </div>
 
+                <!-- Footer -->
                 <footer class="footer footer-transparent d-print-none">
                     <div class="container-xl">
                         <div class="row text-center align-items-center flex-row-reverse">
@@ -2017,7 +2021,7 @@
 
         </div>
 
-        <!-- modal -->
+        <!-- Modal -->
         <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
