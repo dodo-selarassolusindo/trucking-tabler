@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
     <head>
         <title>harviacode.com - codeigniter crud generator</title>
@@ -27,7 +27,7 @@
             }
         </style>
     </head>
-    <body>
+    <body> -->
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <h2 style="margin-top:0px">T00_lokasi List</h2>
@@ -109,5 +109,5 @@
                 });
             });
         </script>
-    </body>
-</html>
+    <!-- </body>
+</html> -->

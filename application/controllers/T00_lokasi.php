@@ -14,7 +14,11 @@ class T00_lokasi extends CI_Controller
 
     public function index()
     {
-        $this->load->view('t00_lokasi/t00_lokasi_list');
+        // $this->load->view('t00_lokasi/t00_lokasi_list');
+        $data['_view'] = 't00_lokasi/t00_lokasi_list';
+    	// $data['_caption'] = 'Dashboard';
+    	$this->load->view('welcome/welcome_message', $data);
+        // $this->load->view('t00_lokasi/t00_lokasi_list');
     }
 
     public function json()
