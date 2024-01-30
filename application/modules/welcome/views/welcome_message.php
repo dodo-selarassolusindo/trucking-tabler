@@ -8,6 +8,7 @@
 * Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
 -->
 <html lang="en">
+
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
@@ -29,6 +30,7 @@
         }
         </style>
     </head>
+
     <body class=" layout-fluid">
 
         <script src="<?= base_url() ?>assets/tabler/js/demo-theme.min.js?1684106062"></script>
@@ -49,18 +51,7 @@
                     </h1>
                     <div class="navbar-nav flex-row order-md-last">
                         <div class="nav-item d-none d-md-flex me-3">
-                            <div class="btn-list">
-                                <a href="https://github.com/tabler/tabler" class="btn" target="_blank" rel="noreferrer">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
-                                    Source code
-                                </a>
-                                <a href="https://github.com/sponsors/codecalm" class="btn" target="_blank" rel="noreferrer">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
-                                    Sponsor
-                                </a>
-                            </div>
+
                         </div>
                         <div class="d-none d-md-flex">
                             <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip"
@@ -200,6 +191,10 @@
                     <div class="navbar">
                         <div class="container-xl">
                             <ul class="navbar-nav">
+
+                                <!-- anonymous -->
+                                <!-- member -->
+                                <!-- admin -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="./" >
                                         <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -210,190 +205,199 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /><path d="M16 5.25l-8 4.5" /></svg>
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Interface
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <div class="dropdown-menu-columns">
-                                            <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="./accordion.html">
-                                                    Accordion
-                                                </a>
-                                                <a class="dropdown-item" href="./blank.html">
-                                                    Blank page
-                                                </a>
-                                                <a class="dropdown-item" href="./badges.html">
-                                                    Badges
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./buttons.html">
-                                                    Buttons
-                                                </a>
-                                                <div class="dropend">
-                                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-cards" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                                                        Cards
+
+                                <!-- member -->
+                                <!-- admin -->
+                                <?php if($this->ion_auth->in_group('members') or $this->ion_auth->in_group('admin')) { ?>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /><path d="M16 5.25l-8 4.5" /></svg>
+                                            </span>
+                                            <span class="nav-link-title">
+                                                Interface
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <div class="dropdown-menu-columns">
+                                                <div class="dropdown-menu-column">
+                                                    <a class="dropdown-item" href="./accordion.html">
+                                                        Accordion
+                                                    </a>
+                                                    <a class="dropdown-item" href="./blank.html">
+                                                        Blank page
+                                                    </a>
+                                                    <a class="dropdown-item" href="./badges.html">
+                                                        Badges
                                                         <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
                                                     </a>
-                                                    <div class="dropdown-menu">
-                                                        <a href="./cards.html" class="dropdown-item">
-                                                            Sample cards
-                                                        </a>
-                                                        <a href="./card-actions.html" class="dropdown-item">
-                                                            Card actions
+                                                    <a class="dropdown-item" href="./buttons.html">
+                                                        Buttons
+                                                    </a>
+                                                    <div class="dropend">
+                                                        <a class="dropdown-item dropdown-toggle" href="#sidebar-cards" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                                                            Cards
                                                             <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
                                                         </a>
-                                                        <a href="./cards-masonry.html" class="dropdown-item">
-                                                            Cards Masonry
-                                                        </a>
+                                                        <div class="dropdown-menu">
+                                                            <a href="./cards.html" class="dropdown-item">
+                                                                Sample cards
+                                                            </a>
+                                                            <a href="./card-actions.html" class="dropdown-item">
+                                                                Card actions
+                                                                <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                            </a>
+                                                            <a href="./cards-masonry.html" class="dropdown-item">
+                                                                Cards Masonry
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <a class="dropdown-item" href="./colors.html">
-                                                    Colors
-                                                </a>
-                                                <a class="dropdown-item" href="./datagrid.html">
-                                                    Data grid
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./datatables.html">
-                                                    Datatables
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./dropdowns.html">
-                                                    Dropdowns
-                                                </a>
-                                                <a class="dropdown-item" href="./modals.html">
-                                                    Modals
-                                                </a>
-                                                <a class="dropdown-item" href="./maps.html">
-                                                    Maps
-                                                </a>
-                                                <a class="dropdown-item" href="./map-fullsize.html">
-                                                    Map fullsize
-                                                </a>
-                                                <a class="dropdown-item" href="./maps-vector.html">
-                                                    Vector maps
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./navigation.html">
-                                                    Navigation
-                                                </a>
-                                                <a class="dropdown-item" href="./charts.html">
-                                                    Charts
-                                                </a>
-                                                <a class="dropdown-item" href="./pagination.html">
-                                                    <!-- Download SVG icon from http://tabler-icons.io/i/pie-chart -->
-                                                    Pagination
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="./placeholder.html">
-                                                    Placeholder
-                                                </a>
-                                                <a class="dropdown-item" href="./steps.html">
-                                                    Steps
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./stars-rating.html">
-                                                    Stars rating
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./tabs.html">
-                                                    Tabs
-                                                </a>
-                                                <a class="dropdown-item" href="./tables.html">
-                                                    Tables
-                                                </a>
-                                                <a class="dropdown-item" href="./carousel.html">
-                                                    Carousel
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./lists.html">
-                                                    Lists
-                                                </a>
-                                                <a class="dropdown-item" href="./typography.html">
-                                                    Typography
-                                                </a>
-                                                <a class="dropdown-item" href="./offcanvas.html">
-                                                    Offcanvas
-                                                </a>
-                                                <a class="dropdown-item" href="./markdown.html">
-                                                    Markdown
-                                                </a>
-                                                <a class="dropdown-item" href="./dropzone.html">
-                                                    Dropzone
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./lightbox.html">
-                                                    Lightbox
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./tinymce.html">
-                                                    TinyMCE
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <a class="dropdown-item" href="./inline-player.html">
-                                                    Inline player
-                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                                                </a>
-                                                <div class="dropend">
-                                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                                                        Authentication
+                                                    <a class="dropdown-item" href="./colors.html">
+                                                        Colors
                                                     </a>
-                                                    <div class="dropdown-menu">
-                                                        <a href="./sign-in.html" class="dropdown-item">
-                                                            Sign in
+                                                    <a class="dropdown-item" href="./datagrid.html">
+                                                        Data grid
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./datatables.html">
+                                                        Datatables
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./dropdowns.html">
+                                                        Dropdowns
+                                                    </a>
+                                                    <a class="dropdown-item" href="./modals.html">
+                                                        Modals
+                                                    </a>
+                                                    <a class="dropdown-item" href="./maps.html">
+                                                        Maps
+                                                    </a>
+                                                    <a class="dropdown-item" href="./map-fullsize.html">
+                                                        Map fullsize
+                                                    </a>
+                                                    <a class="dropdown-item" href="./maps-vector.html">
+                                                        Vector maps
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./navigation.html">
+                                                        Navigation
+                                                    </a>
+                                                    <a class="dropdown-item" href="./charts.html">
+                                                        Charts
+                                                    </a>
+                                                    <a class="dropdown-item" href="./pagination.html">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/pie-chart -->
+                                                        Pagination
+                                                    </a>
+                                                </div>
+                                                <div class="dropdown-menu-column">
+                                                    <a class="dropdown-item" href="./placeholder.html">
+                                                        Placeholder
+                                                    </a>
+                                                    <a class="dropdown-item" href="./steps.html">
+                                                        Steps
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./stars-rating.html">
+                                                        Stars rating
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./tabs.html">
+                                                        Tabs
+                                                    </a>
+                                                    <a class="dropdown-item" href="./tables.html">
+                                                        Tables
+                                                    </a>
+                                                    <a class="dropdown-item" href="./carousel.html">
+                                                        Carousel
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./lists.html">
+                                                        Lists
+                                                    </a>
+                                                    <a class="dropdown-item" href="./typography.html">
+                                                        Typography
+                                                    </a>
+                                                    <a class="dropdown-item" href="./offcanvas.html">
+                                                        Offcanvas
+                                                    </a>
+                                                    <a class="dropdown-item" href="./markdown.html">
+                                                        Markdown
+                                                    </a>
+                                                    <a class="dropdown-item" href="./dropzone.html">
+                                                        Dropzone
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./lightbox.html">
+                                                        Lightbox
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./tinymce.html">
+                                                        TinyMCE
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="./inline-player.html">
+                                                        Inline player
+                                                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                                    </a>
+                                                    <div class="dropend">
+                                                        <a class="dropdown-item dropdown-toggle" href="#sidebar-authentication" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                                                            Authentication
                                                         </a>
-                                                        <a href="./sign-in-link.html" class="dropdown-item">
-                                                            Sign in link
-                                                        </a>
-                                                        <a href="./sign-in-illustration.html" class="dropdown-item">
-                                                            Sign in with illustration
-                                                        </a>
-                                                        <a href="./sign-in-cover.html" class="dropdown-item">
-                                                            Sign in with cover
-                                                        </a>
-                                                        <a href="./sign-up.html" class="dropdown-item">
-                                                            Sign up
-                                                        </a>
-                                                        <a href="./forgot-password.html" class="dropdown-item">
-                                                            Forgot password
-                                                        </a>
-                                                        <a href="./terms-of-service.html" class="dropdown-item">
-                                                            Terms of service
-                                                        </a>
-                                                        <a href="./auth-lock.html" class="dropdown-item">
-                                                            Lock screen
-                                                        </a>
+                                                        <div class="dropdown-menu">
+                                                            <a href="./sign-in.html" class="dropdown-item">
+                                                                Sign in
+                                                            </a>
+                                                            <a href="./sign-in-link.html" class="dropdown-item">
+                                                                Sign in link
+                                                            </a>
+                                                            <a href="./sign-in-illustration.html" class="dropdown-item">
+                                                                Sign in with illustration
+                                                            </a>
+                                                            <a href="./sign-in-cover.html" class="dropdown-item">
+                                                                Sign in with cover
+                                                            </a>
+                                                            <a href="./sign-up.html" class="dropdown-item">
+                                                                Sign up
+                                                            </a>
+                                                            <a href="./forgot-password.html" class="dropdown-item">
+                                                                Forgot password
+                                                            </a>
+                                                            <a href="./terms-of-service.html" class="dropdown-item">
+                                                                Terms of service
+                                                            </a>
+                                                            <a href="./auth-lock.html" class="dropdown-item">
+                                                                Lock screen
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="dropend">
-                                                    <a class="dropdown-item dropdown-toggle" href="#sidebar-error" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                                                        <!-- Download SVG icon from http://tabler-icons.io/i/file-minus -->
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M9 14l6 0" /></svg>
-                                                        Error pages
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <a href="./error-404.html" class="dropdown-item">
-                                                            404 page
+                                                    <div class="dropend">
+                                                        <a class="dropdown-item dropdown-toggle" href="#sidebar-error" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
+                                                            <!-- Download SVG icon from http://tabler-icons.io/i/file-minus -->
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M9 14l6 0" /></svg>
+                                                            Error pages
                                                         </a>
-                                                        <a href="./error-500.html" class="dropdown-item">
-                                                            500 page
-                                                        </a>
-                                                        <a href="./error-maintenance.html" class="dropdown-item">
-                                                            Maintenance page
-                                                        </a>
+                                                        <div class="dropdown-menu">
+                                                            <a href="./error-404.html" class="dropdown-item">
+                                                                404 page
+                                                            </a>
+                                                            <a href="./error-500.html" class="dropdown-item">
+                                                                500 page
+                                                            </a>
+                                                            <a href="./error-maintenance.html" class="dropdown-item">
+                                                                Maintenance page
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                <?php } ?>
+
+                                <!-- admin -->
+                                <?php if ($this->ion_auth->in_group('admin')) { ?>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="./form-elements.html" >
                                         <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
@@ -591,6 +595,8 @@
                                         </a>
                                     </div>
                                 </li>
+
+                                <?php } ?>
                             </ul>
                             <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
                                 <form action="./" method="get" autocomplete="off" novalidate>
@@ -2741,4 +2747,5 @@
         </script>
 
     </body>
+
 </html>
