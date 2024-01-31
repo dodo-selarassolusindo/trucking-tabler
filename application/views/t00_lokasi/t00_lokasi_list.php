@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('assets/datatables/jquery.dataTables.min.css') ?>\"/>
+<link rel="stylesheet" href="<?php echo base_url('assets/datatables/jquery.dataTables.min.css') ?>"/>
 <div class="col-12">
     <div class="card">
         <div class="card-body">
@@ -32,7 +32,7 @@
                     </form>
                 </div>
             </div>
-            <table class="table table-bordered" style="margin-bottom: 10px" id="example">
+            <table class="table table-bordered display" style="margin-bottom: 10px" id="example">
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
@@ -67,10 +67,11 @@
     </div>
 </div>
 
-<script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery-3.7.0.js') ?>"></script>
+<script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
-        new DataTable('#example');
-    }
+        new DataTable('#example')
+    })
 </script>
