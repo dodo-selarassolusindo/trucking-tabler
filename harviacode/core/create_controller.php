@@ -30,11 +30,11 @@ $string .= "
         \$start = intval(\$this->input->get('start'));
 
         if (\$q <> '') {
-            \$config['base_url'] = base_url() . '$c_url/index.html?q=' . urlencode(\$q);
-            \$config['first_url'] = base_url() . '$c_url/index.html?q=' . urlencode(\$q);
+            \$config['base_url'] = base_url() . '$c_url?q=' . urlencode(\$q);
+            \$config['first_url'] = base_url() . '$c_url?q=' . urlencode(\$q);
         } else {
-            \$config['base_url'] = base_url() . '$c_url/index.html';
-            \$config['first_url'] = base_url() . '$c_url/index.html';
+            \$config['base_url'] = base_url() . '$c_url';
+            \$config['first_url'] = base_url() . '$c_url';
         }
 
         \$config['per_page'] = 10;
@@ -52,7 +52,11 @@ $string .= "
             'total_rows' => \$config['total_rows'],
             'start' => \$start,
         );
-        \$this->load->view('$c_url/$v_list', \$data);
+        // \$this->load->view('$c_url/$v_list', \$data);
+        \$data['_sub_judul'] = 'Master';
+        \$data['_judul'] = ucfirst(substr('$c_url', 4));
+        \$data['_view'] = '$c_url/$v_list';
+        \$this->load->view('welcome/welcome_message', \$data);
     }";
 
 } else {

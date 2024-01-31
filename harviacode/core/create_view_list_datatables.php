@@ -39,7 +39,7 @@ $string = "<!-- <!doctype html>
                     <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
                 </div>
             </div>
-            <div class=\"col-md-4 text-right\">
+            <div class=\"col-md-4 text-end\">
                 <?php echo anchor(site_url('".$c_url."/create'), 'Create', 'class=\"btn btn-primary\"'); ?>";
 if ($export_excel == '1') {
     $string .= "

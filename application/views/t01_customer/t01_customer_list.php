@@ -4,7 +4,7 @@
         <div class="card-body">
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-md-4">
-                    <?php echo anchor(site_url('t00_lokasi/create'),'Create', 'class="btn btn-primary"'); ?>
+                    <?php echo anchor(site_url('t01_customer/create'),'Create', 'class="btn btn-primary"'); ?>
                 </div>
                 <div class="col-md-4 text-center">
                     <div style="margin-top: 8px" id="message">
@@ -14,7 +14,7 @@
                 <div class="col-md-1 text-right">
                 </div>
                 <div class="col-md-3 text-right">
-                    <form action="<?php echo site_url('t00_lokasi/index'); ?>" class="form-inline" method="get">
+                    <form action="<?php echo site_url('t01_customer/index'); ?>" class="form-inline" method="get">
                         <div class="input-group">
                             <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
                             <span class="input-group-btn">
@@ -22,7 +22,7 @@
                                     if ($q <> '')
                                     {
                                         ?>
-                                        <a href="<?php echo site_url('t00_lokasi'); ?>" class="btn btn-default">Reset</a>
+                                        <a href="<?php echo site_url('t01_customer'); ?>" class="btn btn-default">Reset</a>
                                         <?php
                                     }
                                 ?>
@@ -35,20 +35,32 @@
             <table class="table table-bordered" style="margin-bottom: 10px">
                 <tr>
                     <th>No</th>
+                    <th>Kode</th>
                     <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Kota</th>
+                    <th>Contact Person</th>
+                    <th>Telepon</th>
+                    <th>Rentang Waktu</th>
                     <th>Action</th>
                 </tr>
-                <?php foreach ($t00_lokasi_data as $t00_lokasi) { ?>
+                <?php foreach ($t01_customer_data as $t01_customer) { ?>
                 <tr>
                     <td width="80px"><?php echo ++$start ?></td>
-                    <td><?php echo $t00_lokasi->nama ?></td>
+                    <td><?php echo $t01_customer->kode ?></td>
+                    <td><?php echo $t01_customer->nama ?></td>
+                    <td><?php echo $t01_customer->alamat ?></td>
+                    <td><?php echo $t01_customer->kota ?></td>
+                    <td><?php echo $t01_customer->contact_person ?></td>
+                    <td><?php echo $t01_customer->telepon ?></td>
+                    <td><?php echo $t01_customer->rentang_waktu ?></td>
                     <td style="text-align:center" width="200px">
                     <?php
-                        echo anchor(site_url('t00_lokasi/read/'.$t00_lokasi->id),'Read');
+                        echo anchor(site_url('t01_customer/read/'.$t01_customer->id),'Read');
                         echo ' | ';
-                        echo anchor(site_url('t00_lokasi/update/'.$t00_lokasi->id),'Update');
+                        echo anchor(site_url('t01_customer/update/'.$t01_customer->id),'Update');
                         echo ' | ';
-                        echo anchor(site_url('t00_lokasi/delete/'.$t00_lokasi->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+                        echo anchor(site_url('t01_customer/delete/'.$t01_customer->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
                     ?>
                     </td>
                 </tr>
@@ -57,7 +69,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-                    <?php echo anchor(site_url('t00_lokasi/excel'), 'Excel', 'class="btn btn-primary"'); ?>
+                    <?php echo anchor(site_url('t01_customer/excel'), 'Excel', 'class="btn btn-primary"'); ?>
                 </div>
                 <div class="col-md-6 text-right">
                     <?php echo $pagination ?>
