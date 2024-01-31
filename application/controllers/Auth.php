@@ -55,7 +55,17 @@ class Auth extends CI_Controller
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+
+			$this->data['_sub_judul'] = 'Master';
+			$this->data['_judul'] = 'Users';
+			$this->data['_view'] = 'auth' . DIRECTORY_SEPARATOR . 'index';
+			$this->_render_page('welcome/welcome_message', $this->data);
+			// $this->load->view('welcome/welcome_message', $this->data);
+
+			// $data['_view'] = 'welcome/welcome_message_list';
+	    	// $data['_caption'] = 'Dashboard';
+	    	// $this->load->view('welcome/welcome_message', $data);
 		}
 	}
 

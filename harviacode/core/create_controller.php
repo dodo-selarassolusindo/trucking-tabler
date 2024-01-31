@@ -61,7 +61,12 @@ $string .="
 
     public function index()
     {
-        \$this->load->view('$c_url/$v_list');
+        // \$this->load->view('$c_url/$v_list');
+
+        \$data['_sub_judul'] = 'Master';
+        \$data['_judul'] = ucfirst(substr('$c_url', 4));
+        \$data['_view'] = '$c_url/$v_list';
+        \$this->load->view('welcome/welcome_message', \$data);
     }
 
     public function json()

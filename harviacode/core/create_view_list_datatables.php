@@ -1,6 +1,6 @@
 <?php
 
-$string = "<!doctype html>
+$string = "<!-- <!doctype html>
 <html>
     <head>
         <title>harviacode.com - codeigniter crud generator</title>
@@ -29,7 +29,7 @@ $string = "<!doctype html>
             }
         </style>
     </head>
-    <body>
+    <body> -->
         <div class=\"row\" style=\"margin-bottom: 10px\">
             <div class=\"col-md-4\">
                 <h2 style=\"margin-top:0px\">".ucfirst($table_name)." List</h2>
@@ -135,8 +135,8 @@ $string .= "
                 });
             });
         </script>
-    </body>
-</html>";
+    <!-- </body>
+</html> -->";
 
 
 $hasil_view_list = createFile($string, $target."views/" . $c_url . "/" . $v_list_file);
