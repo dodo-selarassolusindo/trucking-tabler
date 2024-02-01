@@ -2,24 +2,27 @@
 
 $string = "
 <div class=\"col-12\">
-    <form action=\"<?php echo \$action; ?>\" method=\"post\" class=\"card\">";
-foreach ($non_pk as $row) {
-    if ($row["data_type"] == 'text')
-    {
-    $string .= "
-            <div class=\"form-group\">
-                <label for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
-                <textarea class=\"form-control\" rows=\"3\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\"><?php echo $".$row["column_name"]."; ?></textarea>
-            </div>";
-    } else
-    {
-    $string .= "
-            <div class=\"form-group\">
-                <label for=\"".$row["data_type"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
-                <input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?php echo $".$row["column_name"]."; ?>\" />
-            </div>";
-    }
-}
+    <form action=\"<?php echo \$action; ?>\" method=\"post\" class=\"card\">
+    <div class=\"card\">
+        <div class=\"card-body\">
+            <div class=\"col-md-6\">";
+            foreach ($non_pk as $row) {
+                if ($row["data_type"] == 'text')
+                {
+                $string .= "
+                        <div class=\"form-group\">
+                            <label for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
+                            <textarea class=\"form-control\" rows=\"3\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\"><?php echo $".$row["column_name"]."; ?></textarea>
+                        </div>";
+                } else
+                {
+                $string .= "
+                        <div class=\"form-group\">
+                            <label for=\"".$row["data_type"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
+                            <input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?php echo $".$row["column_name"]."; ?>\" />
+                        </div>";
+                }
+            }
 $string .= "
             <input type=\"hidden\" name=\"".$pk."\" value=\"<?php echo $".$pk."; ?>\" /> ";
 $string .= "
