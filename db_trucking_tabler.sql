@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 31, 2024 at 10:51 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Host: localhost
+-- Generation Time: Feb 01, 2024 at 05:16 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,13 +53,6 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(2, '::1', 'budwir@budwird.com', 1706675263);
 
 -- --------------------------------------------------------
 
@@ -7108,7 +7101,31 @@ CREATE TABLE `t01_customer` (
 --
 
 INSERT INTO `t01_customer` (`id`, `kode`, `nama`, `alamat`, `kota`, `contact_person`, `telepon`, `rentang_waktu`) VALUES
-(1, 'VISTA', 'PT VISTA CONTAINER SERVICE', 'SURABAYA', 1, 'LUTINUS', '03199241533', 0);
+(1, 'VISTA', 'PT VISTA CONTAINER SERVICE', 'SURABAYA', 6995, 'LUTINUS', '03199241533', 0),
+(2, 'BUANA', 'PT BUANA SAMUDERA WASESA', 'SURABAYA', 6995, 'ERICK', '031', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t02_shipper`
+--
+
+CREATE TABLE `t02_shipper` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(10) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  `kota` int(11) NOT NULL,
+  `contact_person` varchar(255) NOT NULL,
+  `telepon` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `t02_shipper`
+--
+
+INSERT INTO `t02_shipper` (`id`, `kode`, `nama`, `alamat`, `kota`, `contact_person`, `telepon`) VALUES
+(1, 'KTI', 'PT KUTAI TIMBER INDONESIA', 'PROBOLINGGO', 7001, '-', '-');
 
 -- --------------------------------------------------------
 
@@ -7143,7 +7160,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$10$i96MpgCRaiZt079TqryusONjEy0A9R6XHqXp/JoeU3C4rujLFa5Qe', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1706677404, 1, 'Administrator', '-', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$10$i96MpgCRaiZt079TqryusONjEy0A9R6XHqXp/JoeU3C4rujLFa5Qe', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1706796140, 1, 'Administrator', '-', 'ADMIN', '0'),
 (2, '::1', NULL, '$2y$10$qyZgRn9irZDDmUphXlFHx.zMdFwFQkt0xTPtkfReOLmiqcrzxFmR.', 'budwir@budwir.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1706590074, 1706677375, 1, 'Budi', 'Wiranto', 'danar hadi', '1234');
 
 -- --------------------------------------------------------
@@ -7196,6 +7213,12 @@ ALTER TABLE `t01_customer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `t02_shipper`
+--
+ALTER TABLE `t02_shipper`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -7240,6 +7263,12 @@ ALTER TABLE `t00_lokasi`
 -- AUTO_INCREMENT for table `t01_customer`
 --
 ALTER TABLE `t01_customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `t02_shipper`
+--
+ALTER TABLE `t02_shipper`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
