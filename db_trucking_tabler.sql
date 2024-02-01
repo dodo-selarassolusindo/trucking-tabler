@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 01, 2024 at 05:16 PM
+-- Generation Time: Feb 01, 2024 at 05:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -7130,6 +7130,22 @@ INSERT INTO `t02_shipper` (`id`, `kode`, `nama`, `alamat`, `kota`, `contact_pers
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t03_vendor`
+--
+
+CREATE TABLE `t03_vendor` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(10) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  `kota` int(11) NOT NULL,
+  `contact_person` varchar(255) NOT NULL,
+  `telepon` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -7219,6 +7235,12 @@ ALTER TABLE `t02_shipper`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `t03_vendor`
+--
+ALTER TABLE `t03_vendor`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -7270,6 +7292,12 @@ ALTER TABLE `t01_customer`
 --
 ALTER TABLE `t02_shipper`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `t03_vendor`
+--
+ALTER TABLE `t03_vendor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
