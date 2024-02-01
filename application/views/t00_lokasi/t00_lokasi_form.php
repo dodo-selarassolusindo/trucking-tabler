@@ -1,24 +1,22 @@
-<!doctype html>
-<html>
-    <head>
-        <title>harviacode.com - codeigniter crud generator</title>
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>"/>
-        <style>
-            body{
-                padding: 15px;
-            }
-        </style>
-    </head>
-    <body>
-        <h2 style="margin-top:0px">T00_lokasi <?php echo $button ?></h2>
-        <form action="<?php echo $action; ?>" method="post">
-            <div class="form-group">
-                <label for="varchar">Nama <?php echo form_error('nama') ?></label>
-                <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?php echo $nama; ?>" />
+
+<div class="col-12">
+    <form action="<?php echo $action; ?>" method="post" class="card">
+        <div class="card-header">
+            <h3 class="card-title"><?= $button ?></h3>
+        </div>
+        <div class="card-body col-6">
+            <div class="mb-3 row">
+                <label class="col-3 col-form-label required">Nama </label>
+                <div class="col">
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?= $nama ?>" />
+                    <small class="form-hint"><?= form_error('nama') ?></small>
+                </div>
             </div>
-            <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
-            <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 
-            <a href="<?php echo site_url('t00_lokasi') ?>" class="btn btn-default">Cancel</a>
-        </form>
-    </body>
-</html>
+            <input type="hidden" name="id" value="<?= $id ?>" />
+        </div>
+        <div class="card-footer text-start">
+            <button type="submit" class="btn btn-primary"><?= $button ?></button>
+            <a href="<?= site_url('t00_lokasi') ?>" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>

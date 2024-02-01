@@ -7,15 +7,7 @@ $string = "<link rel=\"stylesheet\" href=\"<?= base_url('assets/datatables/dataT
         <div class=\"card-body\">
 
             <div class=\"row\" style=\"margin-bottom: 10px\">
-                <div class=\"col-md-4\">
-
-                </div>
-                <div class=\"col-md-4 text-center\">
-                    <div style=\"margin-top: 4px\"  id=\"message\">
-                        <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
-                    </div>
-                </div>
-                <div class=\"col-md-4 text-end\">
+                <div class=\"col-md-4 text-start\">
                     <?php echo anchor(site_url('".$c_url."/create'), 'Create', 'class=\"btn btn-primary\"'); ?>";
                     if ($export_excel == '1') {
                         $string .= "
@@ -30,6 +22,11 @@ $string = "<link rel=\"stylesheet\" href=\"<?= base_url('assets/datatables/dataT
                     <?php echo anchor(site_url('".$c_url."/pdf'), 'PDF', 'class=\"btn btn-primary\"'); ?>";
                     }
                     $string .= "
+                </div>
+                <div class=\"col-md-4 text-center\">
+                    <div style=\"margin-top: 4px\"  id=\"message\">
+                        <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
+                    </div>
                 </div>
             </div>
 

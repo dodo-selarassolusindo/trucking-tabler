@@ -5,17 +5,14 @@
         <div class="card-body">
 
             <div class="row" style="margin-bottom: 10px">
-                <div class="col-md-4">
-
+                <div class="col-md-4 text-start">
+                    <?php echo anchor(site_url('t00_lokasi/create'), 'Create', 'class="btn btn-primary"'); ?>
+                    <?php echo anchor(site_url('t00_lokasi/excel'), 'Excel', 'class="btn btn-primary"'); ?>
                 </div>
                 <div class="col-md-4 text-center">
                     <div style="margin-top: 4px"  id="message">
                         <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
                     </div>
-                </div>
-                <div class="col-md-4 text-end">
-                    <?php echo anchor(site_url('t00_lokasi/create'), 'Create', 'class="btn btn-primary"'); ?>
-                    <?php echo anchor(site_url('t00_lokasi/excel'), 'Excel', 'class="btn btn-primary"'); ?>
                 </div>
             </div>
 

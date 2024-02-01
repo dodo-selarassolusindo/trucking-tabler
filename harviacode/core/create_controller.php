@@ -12,18 +12,18 @@ class " . $c . " extends CI_Controller
         \$this->load->model('$m');
         \$this->load->library('form_validation');";
 
-if ($jenis_tabel <> 'reguler_table') {
-    $string .= "
+        if ($jenis_tabel <> 'reguler_table') {
+            $string .= "
         \$this->load->library('datatables');
         \$this->load->library('ssp');";
-}
+        }
 
-$string .= "
+        $string .= "
     }";
 
 if ($jenis_tabel == 'reguler_table') {
 
-$string .= "
+    $string .= "
 
     public function index()
     {
@@ -62,7 +62,7 @@ $string .= "
 
 } else {
 
-$string .="
+    $string .= "
 
     public function index()
     {
@@ -85,18 +85,24 @@ $string .="
 
 }
 
-$string .= "\n\n    public function read(\$id)
+$string .= "
+
+    public function read(\$id)
     {
         \$row = \$this->" . $m . "->get_by_id(\$id);
         if (\$row) {
-            \$data = array(";
-foreach ($all as $row) {
-    $string .= "
+            \$data = array(
+                'judul_form' => 'Detail Data',";
+            foreach ($all as $row) {
+                $string .= "
                 '" . $row['column_name'] . "' => \$row->" . $row['column_name'] . ",";
-}
-$string .= "
+            }
+            $string .= "
             );
-            \$this->load->view('$c_url/$v_read', \$data);
+            \$data['_sub_judul'] = 'Master';
+            \$data['_judul'] = ucfirst(substr('$c_url', 4));
+            \$data['_view'] = '$c_url/$v_read';
+            \$this->load->view('welcome/welcome_message', \$data);
         } else {
             \$this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('$c_url'));
@@ -114,7 +120,10 @@ foreach ($all as $row) {
 }
 $string .= "
         );
-        \$this->load->view('$c_url/$v_form', \$data);
+        \$data['_sub_judul'] = 'Master';
+        \$data['_judul'] = ucfirst(substr('$c_url', 4));
+        \$data['_view'] = '$c_url/$v_form';
+        \$this->load->view('welcome/welcome_message', \$data);
     }
 
     public function create_action()
@@ -152,7 +161,10 @@ foreach ($all as $row) {
 }
 $string .= "
             );
-            \$this->load->view('$c_url/$v_form', \$data);
+            \$data['_sub_judul'] = 'Master';
+            \$data['_judul'] = ucfirst(substr('$c_url', 4));
+            \$data['_view'] = '$c_url/$v_form';
+            \$this->load->view('welcome/welcome_message', \$data);
         } else {
             \$this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('$c_url'));
