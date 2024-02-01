@@ -11,6 +11,7 @@ class T01_customer extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('datatables');
         $this->load->library('ssp');
+        $this->load->model('T00_lokasi_model');
     }
 
     public function index()
@@ -42,7 +43,7 @@ class T01_customer extends CI_Controller
                 'kode' => $row->kode,
                 'nama' => $row->nama,
                 'alamat' => $row->alamat,
-                'kota' => $row->kota,
+                'kota' => $this->T00_lokasi_model->get_by_id($row->kota)->nama,
                 'contact_person' => $row->contact_person,
                 'telepon' => $row->telepon,
                 'rentang_waktu' => $row->rentang_waktu,
@@ -70,6 +71,7 @@ class T01_customer extends CI_Controller
             'contact_person' => set_value('contact_person'),
             'telepon' => set_value('telepon'),
             'rentang_waktu' => set_value('rentang_waktu'),
+            'lokasi' => $this->T00_lokasi_model->get_all(),
         );
         $data['_sub_judul'] = 'Master';
         $data['_judul'] = ucfirst(substr('t01_customer', 4));
@@ -116,6 +118,7 @@ class T01_customer extends CI_Controller
                 'contact_person' => set_value('contact_person', $row->contact_person),
                 'telepon' => set_value('telepon', $row->telepon),
                 'rentang_waktu' => set_value('rentang_waktu', $row->rentang_waktu),
+                'lokasi' => $this->T00_lokasi_model->get_all(),
             );
             $data['_sub_judul'] = 'Master';
             $data['_judul'] = ucfirst(substr('t01_customer', 4));

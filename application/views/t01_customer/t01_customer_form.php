@@ -29,7 +29,12 @@
             <div class="mb-3 row">
                 <label class="col-3 col-form-label required">Kota </label>
                 <div class="col">
-                    <input type="text" class="form-control" name="kota" id="kota" placeholder="Kota" value="<?= $kota ?>" />
+                    <!-- <input type="text" class="form-control" name="kota" id="kota" placeholder="Kota" value="<?= $kota ?>" /> -->
+                    <select class="form-control select2" name="kota">
+                        <?php foreach($lokasi as $row) { ?>
+                        <option value="<?= $row->id ?>" <?= $row->id == $kota ? 'selected' : '' ?>><?= $row->nama ?></option>
+                        <?php } ?>
+                    </select>
                     <small class="form-hint"><?= form_error('kota') ?></small>
                 </div>
             </div>

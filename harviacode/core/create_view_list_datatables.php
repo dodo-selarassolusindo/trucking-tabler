@@ -60,7 +60,6 @@ $string = "<link rel=\"stylesheet\" href=\"<?= base_url('assets/datatables/dataT
     </div>
 </div>
 
-<script src=\"<?= base_url('assets/datatables/jquery-3.7.0.js') ?>\"></script>
 <script src=\"<?= base_url('assets/datatables/jquery.dataTables.min.js') ?>\"></script>
 <script src=\"<?= base_url('assets/datatables/dataTables.bootstrap5.min.js') ?>\"></script>
 

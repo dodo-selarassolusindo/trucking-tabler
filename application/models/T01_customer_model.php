@@ -32,7 +32,9 @@ class T01_customer_model extends CI_Model
             array('db' => 'kode', 'dt' => 1),
             array('db' => 'nama', 'dt' => 2),
             array('db' => 'alamat', 'dt' => 3),
-            array('db' => 'kota', 'dt' => 4),
+            array('db' => 'kota', 'dt' => 4, 'formatter' => function($d, $row) {
+                return $this->T00_lokasi_model->get_by_id($d)->nama;
+                }),
             array('db' => 'contact_person', 'dt' => 5),
             array('db' => 'telepon', 'dt' => 6),
             array('db' => 'rentang_waktu', 'dt' => 7),

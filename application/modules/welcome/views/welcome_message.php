@@ -20,6 +20,7 @@
         <link href="<?= base_url() ?>assets/tabler/css/tabler-payments.min.css?1684106062" rel="stylesheet"/>
         <link href="<?= base_url() ?>assets/tabler/css/tabler-vendors.min.css?1684106062" rel="stylesheet"/>
         <link href="<?= base_url() ?>assets/tabler/css/demo.min.css?1684106062" rel="stylesheet"/>
+        <link href="<?= base_url() ?>/assets/select2/css/select2.min.css" rel="stylesheet" />
         <style>
         @import url('https://rsms.me/inter/inter.css');
         :root {
@@ -29,6 +30,20 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
         </style>
+        <style media="screen">
+        .select2-container {
+            width: 100%!important;
+        }
+        .select2-search--dropdown .select2-search__field {
+            width: 98%;
+        }
+        .select2-selection__choice__remove {
+            display: none !important;
+        }
+        </style>
+
+        <!-- jquery -->
+        <script src="<?= base_url('assets/datatables/jquery-3.7.0.js') ?>"></script>
     </head>
 
     <body class="layout-fluid">
@@ -836,6 +851,8 @@
         <!-- Tabler Core -->
         <script src="<?= base_url() ?>assets/tabler/js/tabler.min.js?1684106062" defer></script>
         <script src="<?= base_url() ?>assets/tabler/js/demo.min.js?1684106062" defer></script>
+        <!-- select2 -->
+        <script src="<?= base_url() ?>/assets/select2/js/select2.min.js"></script>
         <script>
           // @formatter:off
           document.addEventListener("DOMContentLoaded", function () {
@@ -1424,6 +1441,11 @@
           	})).render();
           });
           // @formatter:on
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.select2').select2()
+            })
         </script>
 
     </body>
