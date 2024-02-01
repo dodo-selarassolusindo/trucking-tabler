@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 01, 2024 at 05:18 PM
+-- Generation Time: Feb 01, 2024 at 06:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -7143,6 +7143,13 @@ CREATE TABLE `t03_vendor` (
   `telepon` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `t03_vendor`
+--
+
+INSERT INTO `t03_vendor` (`id`, `kode`, `nama`, `alamat`, `kota`, `contact_person`, `telepon`) VALUES
+(1, 'ARIF', 'ARIF', 'SURABAYA', 6995, 'ARIF', '-');
+
 -- --------------------------------------------------------
 
 --
@@ -7297,7 +7304,7 @@ ALTER TABLE `t02_shipper`
 -- AUTO_INCREMENT for table `t03_vendor`
 --
 ALTER TABLE `t03_vendor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
