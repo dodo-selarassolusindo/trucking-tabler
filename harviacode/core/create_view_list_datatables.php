@@ -6,59 +6,59 @@ $string = "<link rel=\"stylesheet\" href=\"<?= base_url('assets/datatables/dataT
     <div class=\"card\">
         <div class=\"card-body\">
 
-        <div class=\"row\" style=\"margin-bottom: 10px\">
-            <div class=\"col-md-4\">
-                <!-- <h2 style=\"margin-top:0px\">".ucfirst($table_name)." List</h2> -->
-            </div>
-            <div class=\"col-md-4 text-center\">
-                <div style=\"margin-top: 4px\"  id=\"message\">
-                    <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
+            <div class=\"row\" style=\"margin-bottom: 10px\">
+                <div class=\"col-md-4\">
+
                 </div>
-            </div>
-            <div class=\"col-md-4 text-end\">
-                <?php echo anchor(site_url('".$c_url."/create'), 'Create', 'class=\"btn btn-primary\"'); ?>";
-                if ($export_excel == '1') {
-                    $string .= "
-                <?php echo anchor(site_url('".$c_url."/excel'), 'Excel', 'class=\"btn btn-primary\"'); ?>";
-                }
-                if ($export_word == '1') {
-                    $string .= "
-                <?php echo anchor(site_url('".$c_url."/word'), 'Word', 'class=\"btn btn-primary\"'); ?>";
-                }
-                if ($export_pdf == '1') {
-                    $string .= "
-                <?php echo anchor(site_url('".$c_url."/pdf'), 'PDF', 'class=\"btn btn-primary\"'); ?>";
-                }
-                $string .= "
-            </div>
-        </div>
-
-        <br>
-
-        <table class=\"table table-striped\" id=\"example\" style=\"width:100%\">
-            <thead>
-                <tr>
-                    <th width=\"80px\">No</th>";
-                    foreach ($non_pk as $row) {
+                <div class=\"col-md-4 text-center\">
+                    <div style=\"margin-top: 4px\"  id=\"message\">
+                        <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
+                    </div>
+                </div>
+                <div class=\"col-md-4 text-end\">
+                    <?php echo anchor(site_url('".$c_url."/create'), 'Create', 'class=\"btn btn-primary\"'); ?>";
+                    if ($export_excel == '1') {
                         $string .= "
-                    <th>" . label($row['column_name']) . "</th>";
+                    <?php echo anchor(site_url('".$c_url."/excel'), 'Excel', 'class=\"btn btn-primary\"'); ?>";
+                    }
+                    if ($export_word == '1') {
+                        $string .= "
+                    <?php echo anchor(site_url('".$c_url."/word'), 'Word', 'class=\"btn btn-primary\"'); ?>";
+                    }
+                    if ($export_pdf == '1') {
+                        $string .= "
+                    <?php echo anchor(site_url('".$c_url."/pdf'), 'PDF', 'class=\"btn btn-primary\"'); ?>";
                     }
                     $string .= "
-                    <th width=\"200px\">Action</th>
-                </tr>
-            </thead>";
+                </div>
+            </div>
 
-$column_non_pk = array();
-$i = 1;
-foreach ($non_pk as $row) {
-    $i++;
-    $column_non_pk[] .= "
-                        {\"data\": \"".$row['column_name']."\"}";
-}
-$col_non_pk = implode(',', $column_non_pk);
+            <br>
 
-$string .= "
-        </table>
+            <table class=\"table table-striped\" id=\"example\" style=\"width:100%\">
+                <thead>
+                    <tr>
+                        <th width=\"80px\">No</th>";
+                        foreach ($non_pk as $row) {
+                            $string .= "
+                        <th>" . label($row['column_name']) . "</th>";
+                        }
+                        $string .= "
+                        <th width=\"200px\">Action</th>
+                    </tr>
+                </thead>";
+
+    $column_non_pk = array();
+    $i = 1;
+    foreach ($non_pk as $row) {
+        $i++;
+        $column_non_pk[] .= "
+                            {\"data\": \"".$row['column_name']."\"}";
+    }
+    $col_non_pk = implode(',', $column_non_pk);
+
+    $string .= "
+            </table>
         </div>
     </div>
 </div>

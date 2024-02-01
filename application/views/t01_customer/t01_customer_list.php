@@ -4,38 +4,38 @@
     <div class="card">
         <div class="card-body">
 
-        <div class="row" style="margin-bottom: 10px">
-            <div class="col-md-4">
-                <!-- <h2 style="margin-top:0px">T01_customer List</h2> -->
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="margin-top: 4px"  id="message">
-                    <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4 text-center">
+                    <div style="margin-top: 4px"  id="message">
+                        <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <?php echo anchor(site_url('t01_customer/create'), 'Create', 'class="btn btn-primary"'); ?>
+                    <?php echo anchor(site_url('t01_customer/excel'), 'Excel', 'class="btn btn-primary"'); ?>
                 </div>
             </div>
-            <div class="col-md-4 text-end">
-                <?php echo anchor(site_url('t01_customer/create'), 'Create', 'class="btn btn-primary"'); ?>
-                <?php echo anchor(site_url('t01_customer/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-            </div>
-        </div>
 
-        <br>
+            <br>
 
-        <table class="table table-striped" id="example" style="width:100%">
-            <thead>
-                <tr>
-                    <th width="80px">No</th>
-                    <th>Kode</th>
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>Kota</th>
-                    <th>Contact Person</th>
-                    <th>Telepon</th>
-                    <th>Rentang Waktu</th>
-                    <th width="200px">Action</th>
-                </tr>
-            </thead>
-        </table>
+            <table class="table table-striped" id="example" style="width:100%">
+                <thead>
+                    <tr>
+                        <th width="80px">No</th>
+                        <th>Kode</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Kota</th>
+                        <th>Contact Person</th>
+                        <th>Telepon</th>
+                        <th>Rentang Waktu</th>
+                        <th width="200px">Action</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
 </div>

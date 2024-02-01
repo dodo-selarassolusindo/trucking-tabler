@@ -66,8 +66,6 @@ $string .="
 
     public function index()
     {
-        // \$this->load->view('$c_url/$v_list');
-
         \$data['_sub_judul'] = 'Master';
         \$data['_judul'] = ucfirst(substr('$c_url', 4));
         \$data['_view'] = '$c_url/$v_list';
@@ -229,9 +227,7 @@ if ($export_excel == '1') {
         header(\"Content-Type: application/download\");
         header(\"Content-Disposition: attachment;filename=\" . \$namaFile . \"\");
         header(\"Content-Transfer-Encoding: binary \");
-
         xlsBOF();
-
         \$kolomhead = 0;
         xlsWriteLabel(\$tablehead, \$kolomhead++, \"No\");";
 foreach ($non_pk as $row) {
@@ -242,7 +238,6 @@ foreach ($non_pk as $row) {
 $string .= "
         foreach (\$this->" . $m . "->get_all() as \$data) {
             \$kolombody = 0;
-
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber(\$tablebody, \$kolombody++, \$nourut);";
 foreach ($non_pk as $row) {
@@ -255,7 +250,6 @@ $string .= "
             \$tablebody++;
             \$nourut++;
         }
-
         xlsEOF();
         exit();
     }";

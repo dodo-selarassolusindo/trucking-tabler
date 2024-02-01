@@ -73,8 +73,7 @@ $string .="
             'host' => \$this->db->hostname,
         );
         return json_encode(SSP::simple(\$_GET, \$sql_details, \$this->table, \$this->id, \$columns));
-    }
-    ";
+    }";
 }
 
 $string .="
