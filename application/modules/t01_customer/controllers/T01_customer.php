@@ -11,7 +11,7 @@ class T01_customer extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('datatables');
         $this->load->library('ssp');
-        $this->load->model('T00_lokasi_model');
+        $this->load->model('t00_lokasi/T00_lokasi_model');
     }
 
     public function index()
