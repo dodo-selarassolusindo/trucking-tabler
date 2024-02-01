@@ -67,7 +67,11 @@ class T01_customer extends CI_Controller
             'telepon' => set_value('telepon'),
             'rentang_waktu' => set_value('rentang_waktu'),
         );
-        $this->load->view('t01_customer/t01_customer_form', $data);
+        // $this->load->view('t01_customer/t01_customer_form', $data);
+        $data['_sub_judul'] = 'Master';
+        $data['_judul'] = ucfirst(substr('t01_customer', 4));
+        $data['_view'] = 't01_customer/t01_customer_form';
+        $this->load->view('welcome/welcome_message', $data);
     }
 
     public function create_action()
