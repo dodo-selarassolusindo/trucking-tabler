@@ -1,19 +1,8 @@
 <?php
 
-$string = "<!doctype html>
-<html>
-    <head>
-        <title>harviacode.com - codeigniter crud generator</title>
-        <link rel=\"stylesheet\" href=\"<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>\"/>
-        <style>
-            body{
-                padding: 15px;
-            }
-        </style>
-    </head>
-    <body>
-        <h2 style=\"margin-top:0px\">".ucfirst($table_name)." <?php echo \$button ?></h2>
-        <form action=\"<?php echo \$action; ?>\" method=\"post\">";
+$string = "
+<div class=\"col-12\">
+    <form action=\"<?php echo \$action; ?>\" method=\"post\" class=\"card\">";
 foreach ($non_pk as $row) {
     if ($row["data_type"] == 'text')
     {
