@@ -1,99 +1,77 @@
-<link rel="stylesheet" href="<?php echo base_url('assets/datatables/jquery.dataTables.min.css') ?>"/>
+<link rel="stylesheet" href="<?= base_url('assets/datatables/dataTables.bootstrap5.min.css') ?>"/>
+
 <div class="col-12">
     <div class="card">
         <div class="card-body">
-            <div class="row" style="margin-bottom: 10px">
-                <div class="col-md-4">
-                    <?php echo anchor(site_url('t00_lokasi/create'),'Create', 'class="btn btn-primary"'); ?>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div style="margin-top: 8px" id="message">
-                        <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
-                    </div>
-                </div>
-                <div class="col-md-1 text-right">
-                </div>
-                <div class="col-md-3 text-right">
-                    <form action="<?php echo site_url('t00_lokasi/index'); ?>" class="form-inline" method="get">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
-                            <span class="input-group-btn">
-                                <?php
-                                    if ($q <> '')
-                                    {
-                                        ?>
-                                        <a href="<?php echo site_url('t00_lokasi'); ?>" class="btn btn-default">Reset</a>
-                                        <?php
-                                    }
-                                ?>
-                              <button class="btn btn-primary" type="submit">Search</button>
-                            </span>
-                        </div>
-                    </form>
+
+        <div class="row" style="margin-bottom: 10px">
+            <div class="col-md-4">
+                <!-- <h2 style="margin-top:0px">T00_lokasi List</h2> -->
+            </div>
+            <div class="col-md-4 text-center">
+                <div style="margin-top: 4px"  id="message">
+                    <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
                 </div>
             </div>
-            <!-- <table class="table table-bordered display" style="margin-bottom: 10px" id="example"> -->
-            <table class="table" style="margin-bottom: 10px">
-                <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($t00_lokasi_data as $t00_lokasi) { ?>
-                <tr>
-                    <td width="80px"><?php echo ++$start ?></td>
-                    <td><?php echo $t00_lokasi->nama ?></td>
-                    <td style="text-align:center" width="200px">
-                    <?php
-                        echo anchor(site_url('t00_lokasi/read/'.$t00_lokasi->id),'Read');
-                        echo ' | ';
-                        echo anchor(site_url('t00_lokasi/update/'.$t00_lokasi->id),'Update');
-                        echo ' | ';
-                        echo anchor(site_url('t00_lokasi/delete/'.$t00_lokasi->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
-                    ?>
-                    </td>
-                </tr>
-                <?php } ?>
-                </tbody>
-            </table>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-                    <?php echo anchor(site_url('t00_lokasi/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-                </div>
-                <div class="col-md-6 text-right">
-                    <?php echo $pagination ?>
-                </div>
+            <div class="col-md-4 text-end">
+                <?php echo anchor(site_url('t00_lokasi/create'), 'Create', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('t00_lokasi/excel'), 'Excel', 'class="btn btn-primary"'); ?>
             </div>
+        </div>
 
-            <br>
+        <br>
 
-            <table class="table display" id="example">
-                <thead>
+        <table class="table table-striped" id="example" style="width:100%">
+            <thead>
                 <tr>
-                    <th>No</th>
+                    <th width="80px">No</th>
                     <th>Nama</th>
-                    <th>Action</th>
+                    <th width="200px">Action</th>
                 </tr>
-                </thead>
-            </table>
+            </thead>
+        </table>
         </div>
     </div>
 </div>
 
-<script src="<?php echo base_url('assets/datatables/jquery-3.7.0.js') ?>"></script>
-<script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/datatables/jquery-3.7.0.js') ?>"></script>
+<script src="<?= base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/datatables/dataTables.bootstrap5.min.js') ?>"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
-        new DataTable('#example', {
-            ajax: '<?= site_url()."t00_lokasi/json" ?>',
+        $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
+        {
+            return {
+                "iStart": oSettings._iDisplayStart,
+                "iEnd": oSettings.fnDisplayEnd(),
+                "iLength": oSettings._iDisplayLength,
+                "iTotal": oSettings.fnRecordsTotal(),
+                "iFilteredTotal": oSettings.fnRecordsDisplay(),
+                "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+            }
+        }
+
+        var table = new DataTable('#example', {
+            ajax: '<?= site_url()."t00_lokasi/json2" ?>',
             processing: true,
             serverSide: true,
+            columnDefs: [
+                { searchable: false, orderable: false, targets: 0, },
+                { searchable: false, orderable: false, targets: 2, },
+            ],
+            rowCallback: function(row, data, iDisplayIndex) {
+                var info = this.fnPagingInfo()
+                var page = info.iPage
+                var length = info.iLength
+                var index = page * length + (iDisplayIndex + 1)
+                $('td:eq(0)', row).html(index)
+            },
+            order: [
+                [1, 'asc']
+            ]
         })
-    })
+
+    });
 </script>

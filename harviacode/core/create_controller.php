@@ -14,7 +14,8 @@ class " . $c . " extends CI_Controller
 
 if ($jenis_tabel <> 'reguler_table') {
     $string .= "
-        \$this->load->library('datatables');";
+        \$this->load->library('datatables');
+        \$this->load->library('ssp');";
 }
 
 $string .= "
@@ -77,6 +78,11 @@ $string .="
     {
         header('Content-Type: application/json');
         echo \$this->" . $m . "->json();
+    }
+
+    public function json2()
+    {
+        echo \$this->".$m."->json2();
     }";
 
 }

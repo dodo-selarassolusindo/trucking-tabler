@@ -18,11 +18,11 @@ class " . $m . " extends CI_Model
 
 if ($jenis_tabel <> 'reguler_table') {
 
-$column_all = array();
-foreach ($all as $row) {
-    $column_all[] = $row['column_name'];
-}
-$columnall = implode(',', $column_all);
+    $column_all = array();
+    foreach ($all as $row) {
+        $column_all[] = $row['column_name'];
+    }
+    $columnall = implode(',', $column_all);
 
 $string .="
 
@@ -35,7 +35,46 @@ $string .="
         //\$this->datatables->join('table2', '".$table_name.".field = table2.field');
         \$this->datatables->add_column('action', anchor(site_url('".$c_url."/read/\$1'),'Read').\" | \".anchor(site_url('".$c_url."/update/\$1'),'Update').\" | \".anchor(site_url('".$c_url."/delete/\$1'),'Delete','onclick=\"javasciprt: return confirm(\\'Are You Sure ?\\')\"'), '$pk');
         return \$this->datatables->generate();
-    }";
+    }
+
+    function json2()
+    {
+        \$columns = array(
+            array('db' => 'id', 'dt' => 0, 'formatter' => function(\$d, \$row) {return '';}),";
+
+            $column_all = array();
+            $i = 1;
+            $j = 1;
+            foreach ($all as $row) {
+                $column_all[] = $row['column_name'];
+                if ($i == 1) {
+                    $i++;
+                    continue;
+                }
+                $string .= "
+            array('db' => '".$row['column_name']."', 'dt' => ".$j++."),";
+            }
+
+            $string .= "
+            array('db' => 'id', 'dt' => ".$j.", 'formatter' => function(\$d, \$row) {
+                return '
+                    <a href=\"'.site_url().'$c_url/read/'.\$d.'\">Read</a> |
+                    <a href=\"'.site_url().'$c_url/update/'.\$d.'\">Update</a> |
+                    <a href=\"'.site_url().'$c_url/delete/'.\$d.'\" onclick=\"javascript: return confirm(\\'Are you sure ?\\')\">Delete</a>
+                    ';
+            }),
+        );
+
+        \$this->load->database();
+        \$sql_details = array(
+            'user' => \$this->db->username,
+            'pass' => \$this->db->password,
+            'db' => \$this->db->database,
+            'host' => \$this->db->hostname,
+        );
+        return json_encode(SSP::simple(\$_GET, \$sql_details, \$this->table, \$this->id, \$columns));
+    }
+    ";
 }
 
 $string .="
@@ -114,8 +153,8 @@ $string .= "
 /* http://harviacode.com */";
 
 
-
-
+// $hasil_model = createFile($string, $target."models/" . $m_file);
+// $string = "";
 $hasil_model = createFile($string, $target."models/" . $m_file);
 
 ?>
