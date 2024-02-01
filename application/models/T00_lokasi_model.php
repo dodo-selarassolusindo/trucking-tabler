@@ -14,6 +14,17 @@ class T00_lokasi_model extends CI_Model
         parent::__construct();
     }
 
+    // datatables
+    function json()
+    {
+        $this->datatables->select('id, nama');
+        $this->datatables->from('t00_lokasi');
+        //add this line for join
+        //\$this->datatables->join('table2', '".$table_name.".field = table2.field');
+        $this->datatables->add_column('action', anchor(site_url('t00_lokasi/read/$1'),'Read')." | ".anchor(site_url('t00_lokasi/update/$1'),'Update')." | ".anchor(site_url('t00_lokasi/delete/$1'),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+        return $this->datatables->generate();
+    }
+
     // get all
     function get_all()
     {

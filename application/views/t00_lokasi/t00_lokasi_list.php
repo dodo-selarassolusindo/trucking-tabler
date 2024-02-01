@@ -32,12 +32,16 @@
                     </form>
                 </div>
             </div>
-            <table class="table table-bordered display" style="margin-bottom: 10px" id="example">
+            <!-- <table class="table table-bordered display" style="margin-bottom: 10px" id="example"> -->
+            <table class="table" style="margin-bottom: 10px">
+                <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
                     <th>Action</th>
                 </tr>
+                </thead>
+                <tbody>
                 <?php foreach ($t00_lokasi_data as $t00_lokasi) { ?>
                 <tr>
                     <td width="80px"><?php echo ++$start ?></td>
@@ -53,7 +57,9 @@
                     </td>
                 </tr>
                 <?php } ?>
+                </tbody>
             </table>
+
             <div class="row">
                 <div class="col-md-6">
                     <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
@@ -63,6 +69,18 @@
                     <?php echo $pagination ?>
                 </div>
             </div>
+
+            <br>
+
+            <table class="table display" id="example">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+            </table>
         </div>
     </div>
 </div>
@@ -72,6 +90,10 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        new DataTable('#example')
+        new DataTable('#example', {
+            ajax: '<?= site_url()."t00_lokasi/json" ?>',
+            processing: true,
+            serverSide: true,
+        })
     })
 </script>

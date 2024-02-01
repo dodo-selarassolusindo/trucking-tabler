@@ -9,6 +9,7 @@ class T00_lokasi extends CI_Controller
         parent::__construct();
         $this->load->model('T00_lokasi_model');
         $this->load->library('form_validation');
+        $this->load->library('datatables');
     }
 
     public function index()
@@ -28,6 +29,7 @@ class T00_lokasi extends CI_Controller
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->T00_lokasi_model->total_rows($q);
         $t00_lokasi = $this->T00_lokasi_model->get_limit_data($config['per_page'], $start, $q);
+        // $t00_lokasi = $this->T00_lokasi_model->get_all();
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -44,6 +46,12 @@ class T00_lokasi extends CI_Controller
         $data['_judul'] = ucfirst(substr('t00_lokasi', 4));
         $data['_view'] = 't00_lokasi/t00_lokasi_list';
         $this->load->view('welcome/welcome_message', $data);
+    }
+
+    public function json()
+    {
+        header('Content-Type: application/json');
+        echo $this->T00_lokasi_model->json();
     }
 
     public function read($id)
