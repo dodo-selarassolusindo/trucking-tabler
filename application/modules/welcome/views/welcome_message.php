@@ -210,6 +210,7 @@
                                 switch($uri) {
                                     case 't00_lokasi':
                                     case 't01_customer':
+                                    case 't02_shipper':
                                         echo 'active';
                                         break;
                                 }
@@ -224,6 +225,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item <?= $uri == 't00_lokasi' ? 'active' : '' ?>" href="<?= site_url() ?>t00_lokasi">Lokasi</a>
                                         <a class="dropdown-item <?= $uri == 't01_customer' ? 'active' : '' ?>" href="<?= site_url() ?>t01_customer">Customer</a>
+                                        <a class="dropdown-item <?= $uri == 't02_shipper' ? 'active' : '' ?>" href="<?= site_url() ?>t02_shipper">Shipper</a>
                                     </div>
                                 </li>
 
