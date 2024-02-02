@@ -18,7 +18,7 @@
 
             <br>
 
-            <table class="table table-striped" id="example" style="width:100%">
+            <table class="table table-striped nowrap" id="example" style="width:100%">
                 <thead>
                     <tr>
                         <th width="80px">No</th>

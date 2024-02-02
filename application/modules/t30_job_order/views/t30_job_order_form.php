@@ -103,7 +103,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td><a href="#bookmark_table_detail" onclick="tambah_detail()" class="btn btn-primary mb-2">Tambah Armada</a></td>
+                                <td><a href="#bookmark_table_detail" onclick="tambah_detail()" class="btn btn-primary mb-2 btn-sm">Tambah Armada</a></td>
                             </tr>
                         </tfoot>
                     </table>
