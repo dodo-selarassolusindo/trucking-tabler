@@ -71,6 +71,8 @@
 
             <input type="hidden" name="id" value="<?= $id ?>" />
         </div>
+
+        <!-- detail job order -->
         <div class="card-body col" id="bookmark_table_detail">
             <div class="mb-3 row">
                 <label class="col-2 col-form-label required">Detail </label>
@@ -85,7 +87,10 @@
                             </tr>
                         </thead>
                         <tbody id="table_detail">
+
                             <?php if ($this->uri->segment(2) == 'create') { ?>
+
+                            <!-- create -->
                             <tr id="table_row_0">
                                 <td>
                                     <select class="form-control select2" name="armada[]">
@@ -99,6 +104,25 @@
                                 <td>&nbsp;</td>
                             </tr>
                             <?php } else { ?>
+
+                            <!-- update -->
+                            <?php foreach($all_job_order_detail as $key => $detail) { ?>
+                                <script type="text/javascript">
+                                    ++i
+                                </script>
+                                <tr id="table_row_<?= $key ?>">
+                                    <td>
+                                        <select class="form-control select2" name="armada[]">
+                                            <option value="-1">-</option>
+                                            <?php foreach($all_armada as $row) { ?>
+                                                <option value="<?php echo $row->id ?>" <?= $row->id == $detail->armada ? 'selected' : '' ?>><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" class="form-control" name="nomor_container[]" value="<?= $detail->nomor_container ?>"></td>
+                                    <td><?= $key == 0 ? '&nbsp;' : '<a href="#bookmark_table_detail" onclick="hapus_detail('.$key.')" class="text-danger">Hapus</a>' ?></td>
+                                </tr>
+                            <?php } ?>
                             <?php } ?>
                         </tbody>
                         <tfoot>

@@ -51,6 +51,20 @@ class T31_job_order_detail_model extends CI_Model
         return json_encode(SSP::simple($_GET, $sql_details, $this->table, $this->id, $columns));
     }
 
+    // delete data by job order
+    function delete_by_job_order($job_order)
+    {
+        $this->db->where('job_order', $job_order);
+        $this->db->delete($this->table);
+    }
+
+    // get all by job order
+    function get_all_by_job_order($job_order)
+    {
+        $this->db->where('job_order', $job_order);
+        return $this->db->get($this->table)->result();
+    }
+
     // get all
     function get_all()
     {

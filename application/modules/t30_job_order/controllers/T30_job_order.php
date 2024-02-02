@@ -15,6 +15,7 @@ class T30_job_order extends CI_Controller
         $this->load->model('t02_shipper/T02_shipper_model');
         $this->load->model('t00_lokasi/T00_lokasi_model');
         $this->load->model('t04_armada/T04_armada_model');
+        $this->load->model('t31_job_order_detail/T31_job_order_detail_model');
     }
 
     public function index()
@@ -105,8 +106,23 @@ class T30_job_order extends CI_Controller
                 'tanggal_muat' => date_to_ymd($this->input->post('tanggal_muat',TRUE)),
                 'lokasi' => $this->input->post('lokasi',TRUE),
             );
-
+            // insert table master job order
             $this->T30_job_order_model->insert($data);
+
+            // id table master job order
+            $job_order = $this->db->insert_id();
+
+            // insert table detail job order
+            $data = $this->input->post();
+            foreach ($data['armada'] as $key => $item) {
+                $detail = [
+                    'job_order' => $job_order,
+                    'armada' => $item,
+                    'nomor_container' => $data['nomor_container'][$key],
+                ];
+                $this->T31_job_order_detail_model->insert($detail);
+            }
+
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('t30_job_order'));
         }
@@ -131,6 +147,7 @@ class T30_job_order extends CI_Controller
                 'all_shipper' => $this->T02_shipper_model->get_all(),
                 'all_lokasi' => $this->T00_lokasi_model->get_all(),
                 'all_armada' => $this->T04_armada_model->get_all(),
+                'all_job_order_detail' => $this->T31_job_order_detail_model->get_all_by_job_order($id),
             );
             $data['_sub_judul'] = 'Transaksi';
             $data['_judul'] = ucwords(str_replace('_', ' ', substr('t30_job_order', 4)));
@@ -157,8 +174,26 @@ class T30_job_order extends CI_Controller
                 'tanggal_muat' => date_to_ymd($this->input->post('tanggal_muat',TRUE)),
                 'lokasi' => $this->input->post('lokasi',TRUE),
             );
-
+            // update table master job order
             $this->T30_job_order_model->update($this->input->post('id', TRUE), $data);
+
+            // id table master job order
+            $job_order = $this->input->post('id', TRUE);
+
+            // hapus table detail job order berdasarkan job order
+            $this->T31_job_order_detail_model->delete_by_job_order($job_order);
+
+            // insert table detail job order
+            $data = $this->input->post();
+            foreach ($data['armada'] as $key => $item) {
+                $detail = [
+                    'job_order' => $job_order,
+                    'armada' => $item,
+                    'nomor_container' => $data['nomor_container'][$key],
+                ];
+                $this->T31_job_order_detail_model->insert($detail);
+            }
+
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('t30_job_order'));
         }
@@ -169,7 +204,13 @@ class T30_job_order extends CI_Controller
         $row = $this->T30_job_order_model->get_by_id($id);
 
         if ($row) {
+
+            // hapus table master job order
             $this->T30_job_order_model->delete($id);
+
+            // hapus table detail job order
+            $this->T31_job_order_detail_model->delete_by_job_order($id);
+
             $this->session->set_flashdata('message', 'Delete Record Success');
             redirect(site_url('t30_job_order'));
         } else {
