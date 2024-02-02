@@ -22,6 +22,11 @@ class T02_shipper extends CI_Controller
         $this->load->view('welcome/welcome_message', $data);
     }
 
+    public function get_lokasi_()
+    {
+        echo $this->T00_lokasi_model->get_by_id($this->T02_shipper_model->get_by_id($_POST['id'])->kota)->id;
+    }
+
     public function json()
     {
         header('Content-Type: application/json');

@@ -20,7 +20,8 @@
         <link href="<?= base_url() ?>assets/tabler/css/tabler-payments.min.css?1684106062" rel="stylesheet"/>
         <link href="<?= base_url() ?>assets/tabler/css/tabler-vendors.min.css?1684106062" rel="stylesheet"/>
         <link href="<?= base_url() ?>assets/tabler/css/demo.min.css?1684106062" rel="stylesheet"/>
-        <link href="<?= base_url() ?>/assets/select2/css/select2.min.css" rel="stylesheet" />
+        <link href="<?= base_url() ?>assets/select2/css/select2.min.css" rel="stylesheet" />
+        <link href="<?= base_url() ?>assets/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <style>
         @import url('https://rsms.me/inter/inter.css');
         :root {
@@ -61,7 +62,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                        <a href=".">
+                        <a href="<?= site_url() ?>">
                             <img src="<?= base_url() ?>assets/tabler/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
                         </a>
                     </h1>
@@ -179,7 +180,7 @@
                                 <a href="#" class="dropdown-item">Feedback</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="./settings.html" class="dropdown-item">Settings</a>
-                                <a href="./sign-in.html" class="dropdown-item">Logout</a>
+                                <a href="<?= site_url() ?>auth/logout" class="dropdown-item">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -232,6 +233,27 @@
                                         <a class="dropdown-item <?= $uri == 't03_vendor' ? 'active' : '' ?>" href="<?= site_url() ?>t03_vendor">Vendor</a>
                                         <a class="dropdown-item <?= $uri == 't04_armada' ? 'active' : '' ?>" href="<?= site_url() ?>t04_armada">Armada</a>
                                         <a class="dropdown-item <?= $uri == 't05_satuan' ? 'active' : '' ?>" href="<?= site_url() ?>t05_satuan">Satuan</a>
+                                    </div>
+                                </li>
+
+                                <!-- transaksi -->
+                                <li class="nav-item
+                                <?php
+                                switch($uri) {
+                                    case 't30_job_order':
+                                        echo 'active';
+                                        break;
+                                }
+                                ?>
+                                dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                                        </span>
+                                        <span class="nav-link-title">Transaksi</span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item <?= $uri == 't30_job_order' ? 'active' : '' ?>" href="<?= site_url() ?>t30_job_order">Job Order</a>
                                     </div>
                                 </li>
 
@@ -636,32 +658,7 @@
                                     <!-- deleted -->
 
                                 <!-- help -->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/lifebuoy -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M15 15l3.35 3.35" /><path d="M9 15l-3.35 3.35" /><path d="M5.65 5.65l3.35 3.35" /><path d="M18.35 5.65l-3.35 3.35" /></svg>
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Help
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="https://tabler.io/docs" target="_blank" rel="noopener">
-                                            Documentation
-                                        </a>
-                                        <a class="dropdown-item" href="./changelog.html">
-                                            Changelog
-                                        </a>
-                                        <a class="dropdown-item" href="https://github.com/tabler/tabler" target="_blank" rel="noopener">
-                                            Source code
-                                        </a>
-                                        <a class="dropdown-item text-pink" href="https://github.com/sponsors/codecalm" target="_blank" rel="noopener">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
-                                            Sponsor project!
-                                        </a>
-                                    </div>
-                                </li>
+                                    <!-- deleted -->
 
                             </ul>
                         </div>
@@ -860,7 +857,9 @@
         <script src="<?= base_url() ?>assets/tabler/js/tabler.min.js?1684106062" defer></script>
         <script src="<?= base_url() ?>assets/tabler/js/demo.min.js?1684106062" defer></script>
         <!-- select2 -->
-        <script src="<?= base_url() ?>/assets/select2/js/select2.min.js"></script>
+        <script src="<?= base_url() ?>assets/select2/js/select2.min.js"></script>
+        <!-- datepicker -->
+        <script src="<?= base_url() ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
         <script>
           // @formatter:off
           document.addEventListener("DOMContentLoaded", function () {
@@ -1453,6 +1452,13 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.select2').select2()
+
+                $('.date_dmy').datepicker({
+                    format: "dd-mm-yyyy",
+                    todayBtn: "linked",
+                    autoclose: true,
+                    todayHighlight: true
+                })
             })
         </script>
 

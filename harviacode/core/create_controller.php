@@ -67,7 +67,7 @@ if ($jenis_tabel == 'reguler_table') {
     public function index()
     {
         \$data['_sub_judul'] = 'Master';
-        \$data['_judul'] = ucfirst(substr('$c_url', 4));
+        \$data['_judul'] = ucwords(str_replace('_', ' ', substr('$c_url', 4)));
         \$data['_view'] = '$c_url/$v_list';
         \$this->load->view('welcome/welcome_message', \$data);
     }
@@ -100,7 +100,7 @@ $string .= "
             $string .= "
             );
             \$data['_sub_judul'] = 'Master';
-            \$data['_judul'] = ucfirst(substr('$c_url', 4));
+            \$data['_judul'] = ucwords(str_replace('_', ' ', substr('$c_url', 4)));
             \$data['_view'] = '$c_url/$v_read';
             \$this->load->view('welcome/welcome_message', \$data);
         } else {
@@ -121,7 +121,7 @@ foreach ($all as $row) {
 $string .= "
         );
         \$data['_sub_judul'] = 'Master';
-        \$data['_judul'] = ucfirst(substr('$c_url', 4));
+        \$data['_judul'] = ucwords(str_replace('_', ' ', substr('$c_url', 4)));
         \$data['_view'] = '$c_url/$v_form';
         \$this->load->view('welcome/welcome_message', \$data);
     }
@@ -162,7 +162,7 @@ foreach ($all as $row) {
 $string .= "
             );
             \$data['_sub_judul'] = 'Master';
-            \$data['_judul'] = ucfirst(substr('$c_url', 4));
+            \$data['_judul'] = ucwords(str_replace('_', ' ', substr('$c_url', 4)));
             \$data['_view'] = '$c_url/$v_form';
             \$this->load->view('welcome/welcome_message', \$data);
         } else {

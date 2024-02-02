@@ -42,15 +42,8 @@ $string .="
         \$columns = array(
             array('db' => '$pk', 'dt' => 0, 'formatter' => function(\$d, \$row) {return '';}),";
 
-            // $column_all = array();
             $i = 1;
-            // $j = 1;
             foreach ($non_pk as $row) {
-                // $column_all[] = $row['column_name'];
-                // if ($i == 1) {
-                    // $i++;
-                    // continue;
-                // }
                 $string .= "
             array('db' => '".$row['column_name']."', 'dt' => ".$i++."),";
             }
