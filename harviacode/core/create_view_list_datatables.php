@@ -24,7 +24,7 @@ $string = "<link rel=\"stylesheet\" href=\"<?= base_url('assets/datatables/dataT
                     $string .= "
                 </div>
                 <div class=\"col-md-4 text-center\">
-                    <div style=\"margin-top: 4px\"  id=\"message\">
+                    <div style=\"margin-top: 4px\" id=\"message\">
                         <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
                     </div>
                 </div>

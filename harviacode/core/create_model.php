@@ -40,23 +40,23 @@ $string .="
     function json2()
     {
         \$columns = array(
-            array('db' => 'id', 'dt' => 0, 'formatter' => function(\$d, \$row) {return '';}),";
+            array('db' => '$pk', 'dt' => 0, 'formatter' => function(\$d, \$row) {return '';}),";
 
-            $column_all = array();
+            // $column_all = array();
             $i = 1;
-            $j = 1;
-            foreach ($all as $row) {
-                $column_all[] = $row['column_name'];
-                if ($i == 1) {
-                    $i++;
-                    continue;
-                }
+            // $j = 1;
+            foreach ($non_pk as $row) {
+                // $column_all[] = $row['column_name'];
+                // if ($i == 1) {
+                    // $i++;
+                    // continue;
+                // }
                 $string .= "
-            array('db' => '".$row['column_name']."', 'dt' => ".$j++."),";
+            array('db' => '".$row['column_name']."', 'dt' => ".$i++."),";
             }
 
             $string .= "
-            array('db' => 'id', 'dt' => ".$j.", 'formatter' => function(\$d, \$row) {
+            array('db' => '$pk', 'dt' => ".$i.", 'formatter' => function(\$d, \$row) {
                 return '
                     <a href=\"'.site_url().'$c_url/read/'.\$d.'\">Read</a> |
                     <a href=\"'.site_url().'$c_url/update/'.\$d.'\">Update</a> |

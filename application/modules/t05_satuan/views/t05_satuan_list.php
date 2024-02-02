@@ -6,8 +6,8 @@
 
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-md-4 text-start">
-                    <?php echo anchor(site_url('t00_lokasi/create'), 'Create', 'class="btn btn-primary"'); ?>
-                    <?php echo anchor(site_url('t00_lokasi/excel'), 'Excel', 'class="btn btn-primary"'); ?>
+                    <?php echo anchor(site_url('t05_satuan/create'), 'Create', 'class="btn btn-primary"'); ?>
+                    <?php echo anchor(site_url('t05_satuan/excel'), 'Excel', 'class="btn btn-primary"'); ?>
                 </div>
                 <div class="col-md-4 text-center">
                     <div style="margin-top: 4px" id="message">
@@ -22,7 +22,9 @@
                 <thead>
                     <tr>
                         <th width="80px">No</th>
+                        <th>Kode</th>
                         <th>Nama</th>
+                        <th>Tipe</th>
                         <th width="200px">Action</th>
                     </tr>
                 </thead>
@@ -50,12 +52,12 @@
         }
 
         var table = new DataTable('#example', {
-            ajax: '<?= site_url()."t00_lokasi/json2" ?>',
+            ajax: '<?= site_url()."t05_satuan/json2" ?>',
             processing: true,
             serverSide: true,
             columnDefs: [
                 { searchable: false, orderable: false, targets: 0, },
-                { searchable: false, orderable: false, targets: 2, },
+                { searchable: false, orderable: false, targets: 4, },
             ],
             rowCallback: function(row, data, iDisplayIndex) {
                 var info = this.fnPagingInfo()
@@ -66,7 +68,8 @@
             },
             order: [
                 [1, 'asc']
-            ]
+            ],
+            scrollX: true,
         })
 
     });
