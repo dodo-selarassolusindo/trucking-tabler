@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 01, 2024 at 06:13 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Feb 02, 2024 at 10:44 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -7153,6 +7153,152 @@ INSERT INTO `t03_vendor` (`id`, `kode`, `nama`, `alamat`, `kota`, `contact_perso
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t04_armada`
+--
+
+CREATE TABLE `t04_armada` (
+  `id` int(11) NOT NULL,
+  `merk` varchar(25) NOT NULL,
+  `tipe` varchar(25) NOT NULL,
+  `tahun_pembuatan` varchar(4) NOT NULL,
+  `harga_beli` double NOT NULL,
+  `nomor_polisi` varchar(25) NOT NULL,
+  `nomor_rangka` varchar(50) NOT NULL,
+  `nomor_mesin` varchar(50) NOT NULL,
+  `tanggal_pembelian` date NOT NULL,
+  `tanggal_jatuh_tempo_pajak` date NOT NULL,
+  `tanggal_jatuh_tempo_kir` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `t04_armada`
+--
+
+INSERT INTO `t04_armada` (`id`, `merk`, `tipe`, `tahun_pembuatan`, `harga_beli`, `nomor_polisi`, `nomor_rangka`, `nomor_mesin`, `tanggal_pembelian`, `tanggal_jatuh_tempo_pajak`, `tanggal_jatuh_tempo_kir`) VALUES
+(1, 'NISSAN', 'PK260CT', '2008', 1000000000, 'B 9920 SYK', 'MHPPK260C8K000411', 'FE6119043CY', '2021-07-01', '2021-12-01', '2022-01-12'),
+(3, 'HINO', 'FG8JE1B-BGJ TR HD', '2016', 390000000, 'B 9808 UIW', 'MJEFG8JE1GJB10515', 'J08EUGJ51499', '2021-11-29', '2026-07-16', '2021-11-29'),
+(4, 'HINO', 'FG8JE1B-BGJ TR HD', '2016', 390000000, 'B 9807 UIW', 'MJEFG8JE1GJB10516', 'J08EUGJ51500', '2021-11-29', '2026-07-16', '2021-11-29'),
+(5, 'HINO', 'SG8JDKA-LGJ(SG260)', '2015', 465000000, 'B 9107 UIW', 'MJESG8JDKF17683', 'J08EUFJ70137', '2021-11-29', '2025-07-07', '2021-11-29'),
+(6, 'NISSAN', 'QUESTER', '2017', 460000000, 'B 9847 UIX', 'MHHGKZ30CHK802520', 'GH8448508A1P', '2020-11-01', '2022-09-07', '2023-03-01'),
+(7, 'NISSAN', 'QUESTER', '2017', 460000000, 'B 9833 UIX', 'MHHGKZ30CHK802519', 'GH8448575A1P', '2020-11-01', '2022-09-07', '2023-03-01'),
+(8, 'NISSAN', '-', '2013', 0, 'B 9021 BEI', '-', '-', '2020-11-01', '2023-02-23', '2023-02-23'),
+(9, 'NISSAN', '-', '2013', 0, 'B 9022 BEI', '-', '-', '2020-11-01', '2023-02-23', '2023-02-23'),
+(10, 'HINO', '-', '2014', 0, 'B 9029 TEI', '-', '-', '2020-08-20', '2023-02-23', '2023-02-23'),
+(11, 'HINO', '-', '2014', 0, 'B 9030 TEI', '-', '-', '2020-08-20', '2023-02-23', '2023-02-23'),
+(12, 'NISSAN', '-', '2006', 319000000, 'B 9110 FJ', '-', '-', '2019-01-01', '2023-02-23', '2023-02-23'),
+(13, 'NISSAN', '-', '2003', 210000000, 'B 9622 AI', '-', '-', '2020-01-20', '2023-02-23', '2023-02-23'),
+(14, 'NISSAN', '-', '2003', 210000000, 'B 9781 TX', '-', '-', '2020-01-20', '2023-02-23', '2023-02-23'),
+(15, 'HINO', '-', '2015', 0, 'B 9271 PEI', '-', '-', '2020-06-01', '2023-02-23', '2023-02-23'),
+(16, 'HINO', '-', '2017', 0, 'B 9414 UIX', '-', '-', '2020-08-01', '2023-02-23', '2023-02-23'),
+(17, 'HINO', '-', '2017', 0, 'B 9419 KEH', '-', '-', '2020-07-01', '2023-02-23', '2023-02-23'),
+(18, 'NISSAN', 'QUESTER', '2017', 440000000, 'B 9524 FEH', '-', '-', '2021-07-01', '2023-02-23', '2023-02-23'),
+(19, 'NISSAN', '-', '2009', 0, 'B 9562 TEH', '-', '-', '2020-10-01', '2023-02-23', '2023-02-23'),
+(20, 'NISSAN', '-', '2009', 0, 'B 9761 TEH', '-', '-', '2020-10-01', '2023-02-23', '2023-02-23'),
+(21, 'NISSAN', 'BTX', '2003', 210000000, 'B 9510 TX', '-', '-', '2020-01-20', '2023-02-23', '2023-02-23'),
+(22, 'NISSAN', '-', '2006', 0, 'B 9665 OJ', '-', '-', '2020-08-01', '2023-02-23', '2023-02-23'),
+(23, 'NISSAN', '-', '2006', 0, 'B 9666 OJ', '-', '-', '2020-08-01', '2023-02-23', '2023-02-23'),
+(24, 'NISSAN', '-', '2006', 0, 'B 9667 OJ', '-', '-', '2020-08-01', '2023-02-23', '2023-02-23'),
+(25, 'HINO', '-', '2015', 0, 'B 9758 SEH', '-', '-', '2022-03-08', '2023-02-23', '2023-02-23'),
+(26, 'HINO', '-', '2015', 0, 'B 9760 SEH', '-', '-', '2022-03-08', '2023-02-23', '2023-02-23'),
+(27, 'HINO', '-', '2019', 0, 'B 9896 UWW', '-', '-', '2020-07-20', '2023-02-23', '2023-02-23'),
+(28, 'HINO', '-', '2015', 0, 'H 9323 FP', '-', '-', '2022-03-08', '2023-02-23', '2023-02-23'),
+(29, 'HINO', '-', '2011', 0, 'W 9308 UG', '-', '-', '2022-03-08', '2023-02-23', '2023-02-23'),
+(30, 'HINO', '-', '2013', 0, 'S 8554 UB', '-', '-', '2022-03-08', '2023-02-23', '2023-02-23'),
+(31, 'NISSAN', '-', '2007', 0, 'L 8239 UO', '-', '-', '2022-03-08', '2023-02-23', '2023-02-23'),
+(32, 'NISSAN', '-', '-', 0, 'W 9637 U', '-', '-', '2022-06-02', '2022-06-02', '2022-06-02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t05_satuan`
+--
+
+CREATE TABLE `t05_satuan` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(10) NOT NULL,
+  `nama` varchar(25) NOT NULL,
+  `tipe` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `t05_satuan`
+--
+
+INSERT INTO `t05_satuan` (`id`, `kode`, `nama`, `tipe`) VALUES
+(1, '20\'FT', '20\'FT', 'Container'),
+(2, '40\'FT', '40\'FT', 'Container'),
+(3, 'SET', 'SET', 'Lain-lain'),
+(4, 'PCS', 'PCS', 'Lain-lain');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t06_cost`
+--
+
+CREATE TABLE `t06_cost` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `akun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `t06_cost`
+--
+
+INSERT INTO `t06_cost` (`id`, `nama`, `akun`) VALUES
+(1, 'Saku Sopir', 99),
+(2, 'Storing', 99);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t30_job_order`
+--
+
+CREATE TABLE `t30_job_order` (
+  `id` int(11) NOT NULL,
+  `tanggal_job_order` date NOT NULL,
+  `nomor` varchar(50) NOT NULL,
+  `customer` int(11) NOT NULL,
+  `shipper` int(11) NOT NULL,
+  `tanggal_muat` date NOT NULL,
+  `lokasi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='job order';
+
+--
+-- Dumping data for table `t30_job_order`
+--
+
+INSERT INTO `t30_job_order` (`id`, `tanggal_job_order`, `nomor`, `customer`, `shipper`, `tanggal_muat`, `lokasi`) VALUES
+(3, '2023-10-01', 'JO2310001', 1, 1, '2023-10-01', 7001);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t31_job_order_detail`
+--
+
+CREATE TABLE `t31_job_order_detail` (
+  `id` int(11) NOT NULL,
+  `job_order` int(11) NOT NULL,
+  `armada` int(11) NOT NULL,
+  `nomor_container` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='job order detail';
+
+--
+-- Dumping data for table `t31_job_order_detail`
+--
+
+INSERT INTO `t31_job_order_detail` (`id`, `job_order`, `armada`, `nomor_container`) VALUES
+(19, 3, 5, 'TAKU 2344356'),
+(20, 3, 14, 'TAKU 2334231'),
+(21, 3, 4, 'TAKU 2357950'),
+(22, 3, 7, 'TAKU 2311753');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -7183,7 +7329,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$10$i96MpgCRaiZt079TqryusONjEy0A9R6XHqXp/JoeU3C4rujLFa5Qe', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1706796140, 1, 'Administrator', '-', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$10$i96MpgCRaiZt079TqryusONjEy0A9R6XHqXp/JoeU3C4rujLFa5Qe', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1706855629, 1, 'Administrator', '-', 'ADMIN', '0'),
 (2, '::1', NULL, '$2y$10$qyZgRn9irZDDmUphXlFHx.zMdFwFQkt0xTPtkfReOLmiqcrzxFmR.', 'budwir@budwir.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1706590074, 1706677375, 1, 'Budi', 'Wiranto', 'danar hadi', '1234');
 
 -- --------------------------------------------------------
@@ -7248,6 +7394,36 @@ ALTER TABLE `t03_vendor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `t04_armada`
+--
+ALTER TABLE `t04_armada`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t05_satuan`
+--
+ALTER TABLE `t05_satuan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t06_cost`
+--
+ALTER TABLE `t06_cost`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t30_job_order`
+--
+ALTER TABLE `t30_job_order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `t31_job_order_detail`
+--
+ALTER TABLE `t31_job_order_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -7305,6 +7481,36 @@ ALTER TABLE `t02_shipper`
 --
 ALTER TABLE `t03_vendor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `t04_armada`
+--
+ALTER TABLE `t04_armada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `t05_satuan`
+--
+ALTER TABLE `t05_satuan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `t06_cost`
+--
+ALTER TABLE `t06_cost`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `t30_job_order`
+--
+ALTER TABLE `t30_job_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `t31_job_order_detail`
+--
+ALTER TABLE `t31_job_order_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
