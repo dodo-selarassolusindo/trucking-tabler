@@ -95,7 +95,8 @@ $string = "<link rel=\"stylesheet\" href=\"<?= base_url('assets/datatables/dataT
             },
             order: [
                 [1, 'asc']
-            ]
+            ],
+            scrollX: true,
         })
 
     });
