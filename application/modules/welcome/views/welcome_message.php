@@ -215,6 +215,7 @@
                                     case 't03_vendor':
                                     case 't04_armada':
                                     case 't05_satuan':
+                                    case 't06_cost':
                                         echo 'active';
                                         break;
                                 }
@@ -233,6 +234,7 @@
                                         <a class="dropdown-item <?= $uri == 't03_vendor' ? 'active' : '' ?>" href="<?= site_url() ?>t03_vendor">Vendor</a>
                                         <a class="dropdown-item <?= $uri == 't04_armada' ? 'active' : '' ?>" href="<?= site_url() ?>t04_armada">Armada</a>
                                         <a class="dropdown-item <?= $uri == 't05_satuan' ? 'active' : '' ?>" href="<?= site_url() ?>t05_satuan">Satuan</a>
+                                        <a class="dropdown-item <?= $uri == 't06_cost' ? 'active' : '' ?>" href="<?= site_url() ?>t06_cost">Cost</a>
                                     </div>
                                 </li>
 
