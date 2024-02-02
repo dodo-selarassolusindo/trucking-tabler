@@ -57,6 +57,7 @@ class T30_job_order extends CI_Controller
                 'shipper' => $this->T02_shipper_model->get_by_id($row->shipper)->nama,
                 'tanggal_muat' => date_to_dmy($row->tanggal_muat),
                 'lokasi' => $this->T00_lokasi_model->get_by_id($row->lokasi)->nama,
+                'all_job_order_detail' => $this->T31_job_order_detail_model->get_all_by_job_order($id),
             );
             $data['_sub_judul'] = 'Transaksi';
             $data['_judul'] = ucwords(str_replace('_', ' ', substr('t30_job_order', 4)));

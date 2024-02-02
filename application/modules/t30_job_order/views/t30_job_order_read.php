@@ -12,6 +12,27 @@
                 <tr><td>Shipper</td><td><?php echo $shipper; ?></td></tr>
                 <tr><td>Tanggal Muat</td><td><?php echo $tanggal_muat; ?></td></tr>
                 <tr><td>Lokasi</td><td><?php echo $lokasi; ?></td></tr>
+                <tr>
+                    <td>Detail</td>
+                    <td>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Armada</th>
+                                    <th>Nomor Container</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($all_job_order_detail as $row) { ?>
+                                <tr>
+                                    <td><?= $this->T04_armada_model->get_by_id($row->armada)->merk . ' - ' . $this->T04_armada_model->get_by_id($row->armada)->nomor_polisi ?></td>
+                                    <td><?= $row->nomor_container ?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="card-footer text-start">
