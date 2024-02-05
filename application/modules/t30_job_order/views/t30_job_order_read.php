@@ -18,13 +18,16 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>No.</th>
                                     <th>Armada</th>
                                     <th>Nomor Container</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $no = 0 ?>
                                 <?php foreach($all_job_order_detail as $row) { ?>
                                 <tr>
+                                    <td><?= ++$no ?></td>
                                     <td><?= $this->T04_armada_model->get_by_id($row->armada)->merk . ' - ' . $this->T04_armada_model->get_by_id($row->armada)->nomor_polisi ?></td>
                                     <td><?= $row->nomor_container ?></td>
                                 </tr>
