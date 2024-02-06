@@ -243,6 +243,7 @@
                                 <?php
                                 switch($uri) {
                                     case 't30_job_order':
+                                    case 't32_cost_sheet_detail':
                                         echo 'active';
                                         break;
                                 }
@@ -256,6 +257,7 @@
                                     </a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item <?= $uri == 't30_job_order' ? 'active' : '' ?>" href="<?= site_url() ?>t30_job_order">Job Order</a>
+                                        <a class="dropdown-item <?= $uri == 't32_cost_sheet_detail' ? 'active' : '' ?>" href="<?= site_url() ?>t32_cost_sheet_detail">Cost Sheet</a>
                                     </div>
                                 </li>
 
