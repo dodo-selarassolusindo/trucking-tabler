@@ -27,7 +27,7 @@
                 <div class="col">
                     <!-- <input type="text" class="form-control" name="customer" id="customer" placeholder="Customer" value="<?= $customer ?>" /> -->
                     <select class="form-control select2" name="customer">
-                        <option value="-1">-</option>
+                        <option value="">-</option>
                         <?php foreach($all_customer as $row) { ?>
                         <option value="<?= $row->id ?>" <?= $row->id == $customer ? 'selected' : '' ?>><?= $row->nama ?></option>
                         <?php } ?>
@@ -40,7 +40,7 @@
                 <div class="col">
                     <!-- <input type="text" class="form-control" name="shipper" id="shipper" placeholder="Shipper" value="<?= $shipper ?>" /> -->
                     <select class="form-control select2" name="shipper" id="shipper">
-                        <option value="-1">-</option>
+                        <option value="">-</option>
                         <?php foreach($all_shipper as $row) { ?>
                         <option value="<?= $row->id ?>" <?= $row->id == $shipper ? 'selected' : '' ?>><?= $row->nama ?></option>
                         <?php } ?>
@@ -60,7 +60,7 @@
                 <div class="col">
                     <!-- <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi" value="<?= $lokasi ?>" /> -->
                     <select class="form-control select2" name="lokasi" id="lokasi">
-                        <option value="-1">-</option>
+                        <option value="">-</option>
                         <?php foreach($all_lokasi as $row) { ?>
                         <option value="<?= $row->id ?>" <?= $row->id == $lokasi ? 'selected' : '' ?>><?= $row->nama ?></option>
                         <?php } ?>
@@ -94,7 +94,7 @@
                             <tr id="table_row_0">
                                 <td>
                                     <select class="form-control select2" name="armada[]">
-                                        <option value="-1">-</option>
+                                        <option value="">-</option>
                                         <?php foreach($all_armada as $row) { ?>
                                             <option value="<?php echo $row->id ?>"><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
                                         <?php } ?>
@@ -113,7 +113,7 @@
                                 <tr id="table_row_<?= $key ?>">
                                     <td>
                                         <select class="form-control select2" name="armada[]">
-                                            <option value="-1">-</option>
+                                            <option value="">-</option>
                                             <?php foreach($all_armada as $row) { ?>
                                                 <option value="<?php echo $row->id ?>" <?= $row->id == $detail->armada ? 'selected' : '' ?>><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
                                             <?php } ?>
@@ -177,7 +177,7 @@
             <tr id="table_row_`+i+`">
                 <td>
                     <select class="form-control select2" name="armada[]">
-                        <option value="-1">-</option>
+                        <option value="">-</option>
                         <?php foreach($all_armada as $row) { ?>
                             <option value="<?= $row->id ?>"><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
                         <?php } ?>

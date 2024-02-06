@@ -14,6 +14,7 @@ class T32_cost_sheet_detail extends CI_Controller
         $this->load->model('t01_customer/T01_customer_model');
         $this->load->model('t02_shipper/T02_shipper_model');
         $this->load->model('t00_lokasi/T00_lokasi_model');
+        $this->load->model('t30_job_order/T30_job_order_model');
     }
 
     public function index()
@@ -69,19 +70,20 @@ class T32_cost_sheet_detail extends CI_Controller
             'button' => 'Create',
             'action' => site_url('t32_cost_sheet_detail/create_action'),
             'id' => set_value('id'),
-            'job_order' => set_value('job_order'),
-            'vendor' => set_value('vendor'),
-            'cost' => set_value('cost'),
-            'armada' => set_value('armada'),
-            'keterangan' => set_value('keterangan'),
-            'qty' => set_value('qty'),
-            'nilai' => set_value('nilai'),
-            'nominal' => set_value('nominal'),
-            'nomor_ivr' => set_value('nomor_ivr'),
-            'is_hapus' => set_value('is_hapus'),
+            // 'job_order' => set_value('job_order'),
+            // 'vendor' => set_value('vendor'),
+            // 'cost' => set_value('cost'),
+            // 'armada' => set_value('armada'),
+            // 'keterangan' => set_value('keterangan'),
+            // 'qty' => set_value('qty'),
+            // 'nilai' => set_value('nilai'),
+            // 'nominal' => set_value('nominal'),
+            // 'nomor_ivr' => set_value('nomor_ivr'),
+            // 'is_hapus' => set_value('is_hapus'),
+            'all_job_order' => $this->T30_job_order_model->get_all_not_in_cost_sheet(),
         );
-        $data['_sub_judul'] = 'Master';
-        $data['_judul'] = ucwords(str_replace('_', ' ', substr('t32_cost_sheet_detail', 4)));
+        $data['_sub_judul'] = 'Transaksi';
+        $data['_judul'] = 'Cost Sheet'; // ucwords(str_replace('_', ' ', substr('t32_cost_sheet_detail', 4)));
         $data['_view'] = 't32_cost_sheet_detail/t32_cost_sheet_detail_form';
         $this->load->view('welcome/welcome_message', $data);
     }

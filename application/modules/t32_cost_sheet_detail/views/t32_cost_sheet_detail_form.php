@@ -1,4 +1,7 @@
-
+<script type="text/javascript">
+    var i = 0;
+    var update = '<?= $this->uri->segment(2) ?>';
+</script>
 <div class="col-12">
     <form action="<?php echo $action; ?>" method="post" class="card">
         <div class="card-header">
@@ -6,80 +9,176 @@
         </div>
         <div class="card-body col-6">
             <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Job Order </label>
+                <label class="col-4 col-form-label required">Nomor </label>
                 <div class="col">
-                    <input type="text" class="form-control" name="job_order" id="job_order" placeholder="Job Order" value="<?= $job_order ?>" />
+                    <!-- <input type="text" class="form-control" name="nomor" id="nomor" placeholder="Nomor" value="<?= $nomor ?>" /> -->
+                    <select class="form-control select2" name="job_order" id="job_order">
+                        <option value="-1">-</option>
+                        <?php foreach($all_job_order as $row) { ?>
+                        <option value="<?= $row->id ?>"><?= $row->nomor ?></option>
+                        <?php } ?>
+                    </select>
                     <small class="form-hint"><?= form_error('job_order') ?></small>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Vendor </label>
+                <label class="col-4 col-form-label">Tanggal Job Order </label>
                 <div class="col">
-                    <input type="text" class="form-control" name="vendor" id="vendor" placeholder="Vendor" value="<?= $vendor ?>" />
-                    <small class="form-hint"><?= form_error('vendor') ?></small>
+                    <input readonly type="text" class="form-control date_dmy" id="tanggal_job_order" placeholder="Tanggal Job Order"/>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Cost </label>
+                <label class="col-4 col-form-label">Customer </label>
                 <div class="col">
-                    <input type="text" class="form-control" name="cost" id="cost" placeholder="Cost" value="<?= $cost ?>" />
-                    <small class="form-hint"><?= form_error('cost') ?></small>
+                    <input readonly type="text" class="form-control" id="customer" placeholder="Customer"/>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Armada </label>
+                <label class="col-4 col-form-label">Shipper </label>
                 <div class="col">
-                    <input type="text" class="form-control" name="armada" id="armada" placeholder="Armada" value="<?= $armada ?>" />
-                    <small class="form-hint"><?= form_error('armada') ?></small>
+                    <input readonly type="text" class="form-control" id="shipper" placeholder="Shipper"/>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Keterangan </label>
+                <label class="col-4 col-form-label">Tanggal Muat </label>
                 <div class="col">
-                    <textarea class="form-control" rows="3" name="keterangan" id="keterangan" placeholder="Keterangan"><?= $keterangan ?></textarea>
-                    <small class="form-hint"><?= form_error('keterangan') ?></small>
+                    <input readonly type="text" class="form-control date_dmy" id="tanggal_muat" placeholder="Tanggal Muat"/>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Qty </label>
+                <label class="col-4 col-form-label">Lokasi </label>
                 <div class="col">
-                    <input type="text" class="form-control" name="qty" id="qty" placeholder="Qty" value="<?= $qty ?>" />
-                    <small class="form-hint"><?= form_error('qty') ?></small>
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Nilai </label>
-                <div class="col">
-                    <input type="text" class="form-control" name="nilai" id="nilai" placeholder="Nilai" value="<?= $nilai ?>" />
-                    <small class="form-hint"><?= form_error('nilai') ?></small>
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Nominal </label>
-                <div class="col">
-                    <input type="text" class="form-control" name="nominal" id="nominal" placeholder="Nominal" value="<?= $nominal ?>" />
-                    <small class="form-hint"><?= form_error('nominal') ?></small>
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Nomor Ivr </label>
-                <div class="col">
-                    <input type="text" class="form-control" name="nomor_ivr" id="nomor_ivr" placeholder="Nomor Ivr" value="<?= $nomor_ivr ?>" />
-                    <small class="form-hint"><?= form_error('nomor_ivr') ?></small>
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label class="col-3 col-form-label required">Is Hapus </label>
-                <div class="col">
-                    <input type="text" class="form-control" name="is_hapus" id="is_hapus" placeholder="Is Hapus" value="<?= $is_hapus ?>" />
-                    <small class="form-hint"><?= form_error('is_hapus') ?></small>
+                    <input readonly type="text" class="form-control" id="lokasi" placeholder="Lokasi"/>
                 </div>
             </div>
             <input type="hidden" name="id" value="<?= $id ?>" />
         </div>
+
+        <!-- detail job order -->
+        <div class="card-body col" id="bookmark_table_detail">
+            <div class="mb-3 row">
+                <label class="col-2 col-form-label required">Detail </label>
+                <div class="col">
+                    <!-- <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi" value="<?= $lokasi ?>" /> -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Armada</th>
+                                <th>Nomor Container</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_detail">
+
+                            <?php if ($this->uri->segment(2) == 'create') { ?>
+
+                            <!-- create -->
+                            <tr id="table_row_0">
+                                <td>
+                                    <select class="form-control select2" name="armada[]">
+                                        <option value="-1">-</option>
+                                        <?php foreach($all_armada as $row) { ?>
+                                            <option value="<?php echo $row->id ?>"><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="form-control" name="nomor_container[]"></td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <?php } else { ?>
+
+                            <!-- update -->
+                            <?php foreach($all_job_order_detail as $key => $detail) { ?>
+                                <script type="text/javascript">
+                                    ++i
+                                </script>
+                                <tr id="table_row_<?= $key ?>">
+                                    <td>
+                                        <select class="form-control select2" name="armada[]">
+                                            <option value="-1">-</option>
+                                            <?php foreach($all_armada as $row) { ?>
+                                                <option value="<?php echo $row->id ?>" <?= $row->id == $detail->armada ? 'selected' : '' ?>><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" class="form-control" name="nomor_container[]" value="<?= $detail->nomor_container ?>"></td>
+                                    <td><?= $key == 0 ? '&nbsp;' : '<a href="#bookmark_table_detail" onclick="hapus_detail('.$key.')" class="text-danger">Hapus</a>' ?></td>
+                                </tr>
+                            <?php } ?>
+                            <?php } ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><a href="#bookmark_table_detail" onclick="tambah_detail()" class="btn btn-primary mb-2 btn-sm">Tambah Armada</a></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div class="card-footer text-start">
             <button type="submit" class="btn btn-primary"><?= $button ?></button>
-            <a href="<?= site_url('t32_cost_sheet_detail') ?>" class="btn btn-secondary">Cancel</a>
+            <a href="<?= site_url('t30_job_order') ?>" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#tanggal_job_order').on('change', function () {
+            $.ajax({
+                type: "POST", //we are using POST method to submit the data to the server side
+                url: '<?= site_url() ?>t30_job_order/get_new_nomor_', // get the route value
+                data: {tanggal: $(this).val()}, // our serialized array data for server side
+                success: function (response) {//once the request successfully process to the server side it will return result here
+                	document.getElementById('nomor').value = response;
+                },
+    	    });
+            $('#tanggal_muat').val($(this).val())
+        })
+
+        $('#shipper').on('change', function () {
+            $.ajax({
+                type: "POST", //we are using POST method to submit the data to the server side
+                url: '<?= site_url() ?>t02_shipper/get_lokasi_', // get the route value
+                data: {id: $(this).val()}, // our serialized array data for server side
+                success: function (response) {//once the request successfully process to the server side it will return result here
+                	$('#lokasi').val(response).change()
+                },
+    	    })
+        })
+
+    })
+
+    function tambah_detail()
+    {
+        ++i;
+        $('#table_detail').append(
+            `
+            <tr id="table_row_`+i+`">
+                <td>
+                    <select class="form-control select2" name="armada[]">
+                        <option value="-1">-</option>
+                        <?php foreach($all_armada as $row) { ?>
+                            <option value="<?= $row->id ?>"><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="nomor_container[]">
+                </td>
+                <td>
+                    <a href="#bookmark_table_detail" onclick="hapus_detail(`+i+`)" class="text-danger">Hapus</a>
+                </td>
+            </tr>
+            `
+        );
+        $('.select2').select2();
+    }
+
+    function hapus_detail(index)
+    {
+		$('#table_row_'+index).remove();
+	}
+</script>

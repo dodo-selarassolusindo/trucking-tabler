@@ -64,6 +64,13 @@ class T30_job_order_model extends CI_Model
         return json_encode(SSP::simple($_GET, $sql_details, $this->table, $this->id, $columns));
     }
 
+    function get_all_not_in_cost_sheet()
+    {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->where_not_in('(select job_order from t32_cost_sheet_detail group by job_order)');
+        return $this->db->get($this->table)->result();
+    }
+
     // get all
     function get_all()
     {
