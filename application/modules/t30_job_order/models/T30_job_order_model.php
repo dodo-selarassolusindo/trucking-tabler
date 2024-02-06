@@ -64,6 +64,25 @@ class T30_job_order_model extends CI_Model
         return json_encode(SSP::simple($_GET, $sql_details, $this->table, $this->id, $columns));
     }
 
+    function get_by_id_json($id)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->select('t01_customer.nama as customer_nama');
+        $this->db->select('t02_shipper.nama as shipper_nama');
+        $this->db->select('t00_lokasi.nama as lokasi_nama');
+        $this->db->select('t31_job_order_detail.*');
+        $this->db->select('t04_armada.merk, t04_armada.nomor_polisi');
+        $this->db->from($this->table);
+        $this->db->where($this->table.'.'.$this->id, $id);
+        $this->db->join('t01_customer', 't01_customer.id = '.$this->table.'.customer');
+        $this->db->join('t02_shipper', 't02_shipper.id = '.$this->table.'.shipper');
+        $this->db->join('t00_lokasi', 't00_lokasi.id = '.$this->table.'.lokasi');
+        $this->db->join('t31_job_order_detail', 't31_job_order_detail.job_order = '.$this->table.'.id', 'left');
+        $this->db->join('t04_armada', 't04_armada.id = t31_job_order_detail.armada');
+        // return json_encode($this->db->get($this->table)->row());
+        return json_encode($this->db->get()->result());
+    }
+
     function get_all_not_in_cost_sheet()
     {
         $this->db->order_by($this->id, $this->order);

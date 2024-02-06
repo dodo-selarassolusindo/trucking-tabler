@@ -8,12 +8,12 @@
             <h3 class="card-title"><?= $button ?></h3>
         </div>
         <div class="card-body col-6">
-            <div class="mb-3 row">
-                <label class="col-4 col-form-label required">Nomor </label>
+            <div class="row">
+                <label class="col-4 col-form-label required">Nomor Job Order </label>
                 <div class="col">
                     <!-- <input type="text" class="form-control" name="nomor" id="nomor" placeholder="Nomor" value="<?= $nomor ?>" /> -->
                     <select class="form-control select2" name="job_order" id="job_order">
-                        <option value="-1">-</option>
+                        <option value="">-</option>
                         <?php foreach($all_job_order as $row) { ?>
                         <option value="<?= $row->id ?>"><?= $row->nomor ?></option>
                         <?php } ?>
@@ -21,43 +21,55 @@
                     <small class="form-hint"><?= form_error('job_order') ?></small>
                 </div>
             </div>
-            <div class="mb-3 row">
+            <div class="row">
                 <label class="col-4 col-form-label">Tanggal Job Order </label>
-                <div class="col">
-                    <input readonly type="text" class="form-control date_dmy" id="tanggal_job_order" placeholder="Tanggal Job Order"/>
-                </div>
+                <label class="col col-form-label"><div id="tanggal_job_order"></div> </label>
             </div>
-            <div class="mb-3 row">
+            <div class="row">
                 <label class="col-4 col-form-label">Customer </label>
-                <div class="col">
-                    <input readonly type="text" class="form-control" id="customer" placeholder="Customer"/>
-                </div>
+                <label class="col col-form-label"><div id="customer"></div> </label>
             </div>
-            <div class="mb-3 row">
+            <div class="row">
                 <label class="col-4 col-form-label">Shipper </label>
-                <div class="col">
-                    <input readonly type="text" class="form-control" id="shipper" placeholder="Shipper"/>
-                </div>
+                <label class="col col-form-label"><div id="shipper"></div> </label>
             </div>
-            <div class="mb-3 row">
+            <div class="row">
                 <label class="col-4 col-form-label">Tanggal Muat </label>
-                <div class="col">
-                    <input readonly type="text" class="form-control date_dmy" id="tanggal_muat" placeholder="Tanggal Muat"/>
-                </div>
+                <label class="col col-form-label"><div id="tanggal_muat"></div> </label>
             </div>
             <div class="mb-3 row">
                 <label class="col-4 col-form-label">Lokasi </label>
-                <div class="col">
-                    <input readonly type="text" class="form-control" id="lokasi" placeholder="Lokasi"/>
-                </div>
+                <label class="col col-form-label"><div id="lokasi"></div> </label>
             </div>
             <input type="hidden" name="id" value="<?= $id ?>" />
-        </div>
+        <!-- </div> -->
 
         <!-- detail job order -->
+        <!-- <div class="card-body col" id="bookmark_table_detail"> -->
+            <div class="row">
+                <label class="col-4 col-form-label">Detail Armada</label>
+                <div class="col">
+                    <!-- <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi" value="<?= $lokasi ?>" /> -->
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Armada</th>
+                                <th>Nomor Container</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_detail">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- detail cost sheet -->
         <div class="card-body col" id="bookmark_table_detail">
             <div class="mb-3 row">
-                <label class="col-2 col-form-label required">Detail </label>
+                <label class="col-2 col-form-label required">Detail Cost Sheet</label>
                 <div class="col">
                     <!-- <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi" value="<?= $lokasi ?>" /> -->
                     <table class="table table-striped">
@@ -76,10 +88,10 @@
                             <tr id="table_row_0">
                                 <td>
                                     <select class="form-control select2" name="armada[]">
-                                        <option value="-1">-</option>
-                                        <?php foreach($all_armada as $row) { ?>
+                                        <option value="">-</option>
+                                        <!-- <?php foreach($all_armada as $row) { ?>
                                             <option value="<?php echo $row->id ?>"><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
-                                        <?php } ?>
+                                        <?php } ?> -->
                                     </select>
                                 </td>
                                 <td><input type="text" class="form-control" name="nomor_container[]"></td>
@@ -95,10 +107,10 @@
                                 <tr id="table_row_<?= $key ?>">
                                     <td>
                                         <select class="form-control select2" name="armada[]">
-                                            <option value="-1">-</option>
-                                            <?php foreach($all_armada as $row) { ?>
+                                            <option value="">-</option>
+                                            <!-- <?php foreach($all_armada as $row) { ?>
                                                 <option value="<?php echo $row->id ?>" <?= $row->id == $detail->armada ? 'selected' : '' ?>><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
-                                            <?php } ?>
+                                            <?php } ?> -->
                                         </select>
                                     </td>
                                     <td><input type="text" class="form-control" name="nomor_container[]" value="<?= $detail->nomor_container ?>"></td>
@@ -116,9 +128,10 @@
                 </div>
             </div>
         </div>
+
         <div class="card-footer text-start">
             <button type="submit" class="btn btn-primary"><?= $button ?></button>
-            <a href="<?= site_url('t30_job_order') ?>" class="btn btn-secondary">Cancel</a>
+            <a href="<?= site_url('t32_cost_sheet_detail') ?>" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>
@@ -126,25 +139,32 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $('#tanggal_job_order').on('change', function () {
+        $('#job_order').on('change', function () {
             $.ajax({
                 type: "POST", //we are using POST method to submit the data to the server side
-                url: '<?= site_url() ?>t30_job_order/get_new_nomor_', // get the route value
-                data: {tanggal: $(this).val()}, // our serialized array data for server side
-                success: function (response) {//once the request successfully process to the server side it will return result here
-                	document.getElementById('nomor').value = response;
-                },
-    	    });
-            $('#tanggal_muat').val($(this).val())
-        })
-
-        $('#shipper').on('change', function () {
-            $.ajax({
-                type: "POST", //we are using POST method to submit the data to the server side
-                url: '<?= site_url() ?>t02_shipper/get_lokasi_', // get the route value
+                url: '<?= site_url() ?>t30_job_order/get_by_id_json_', // get the route value
                 data: {id: $(this).val()}, // our serialized array data for server side
                 success: function (response) {//once the request successfully process to the server side it will return result here
-                	$('#lokasi').val(response).change()
+                	$('#tanggal_job_order').html(response[0].tanggal_job_order)
+                	$('#customer').html(response[0].customer_nama)
+                	$('#shipper').html(response[0].shipper_nama)
+                    $('#tanggal_muat').html(response[0].tanggal_muat)
+                    $('#lokasi').html(response[0].lokasi_nama)
+                    $('#table_detail').empty()
+                    var no = 0
+                    $.each(response, function(index, value) {
+                        // console.log(value.armada + ' - ' + value.nomor_container)
+                        $('#table_detail').append(
+                            `
+                            <tr>
+                                <td>`+ ++no +`</td>
+                                <td>`+value.merk+' - '+value.nomor_polisi+`</td>
+                                <td>`+value.nomor_container+`</td>
+
+                            </tr>
+                            `
+                        )
+                    })
                 },
     	    })
         })
@@ -159,10 +179,10 @@
             <tr id="table_row_`+i+`">
                 <td>
                     <select class="form-control select2" name="armada[]">
-                        <option value="-1">-</option>
-                        <?php foreach($all_armada as $row) { ?>
-                            <option value="<?= $row->id ?>"><?= $row->merk . ' - ' . $row->nomor_polisi ?></option>
-                        <?php } ?>
+                        <option value="">-</option>
+                        <?php //foreach($all_armada as $row) { ?>
+                            <option value="<?= '' //$row->id ?>"><?= '' //$row->merk . ' - ' . $row->nomor_polisi ?></option>
+                        <?php //} ?>
                     </select>
                 </td>
                 <td>

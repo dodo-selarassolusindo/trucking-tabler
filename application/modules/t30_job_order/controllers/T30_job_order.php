@@ -26,6 +26,14 @@ class T30_job_order extends CI_Controller
         $this->load->view('welcome/welcome_message', $data);
     }
 
+    public function get_by_id_json_()
+    {
+        // echo 'JU'.$_POST['tgl']; //exit;
+        header('Content-Type: application/json');
+        echo $this->T30_job_order_model->get_by_id_json($_POST['id']);
+        // pre($_POST['tanggal']); exit;
+    }
+
     public function get_new_nomor_()
     {
         // echo 'JU'.$_POST['tgl']; //exit;

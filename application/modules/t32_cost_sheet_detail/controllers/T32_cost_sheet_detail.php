@@ -186,7 +186,7 @@ class T32_cost_sheet_detail extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('job_order', 'job order', 'trim|required');
+        $this->form_validation->set_rules('job_order', 'Nomor Job Order', 'trim|required');
         $this->form_validation->set_rules('vendor', 'vendor', 'trim|required');
         $this->form_validation->set_rules('cost', 'cost', 'trim|required');
         $this->form_validation->set_rules('armada', 'armada', 'trim|required');
