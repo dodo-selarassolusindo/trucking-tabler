@@ -42,10 +42,8 @@
                 <label class="col col-form-label"><div id="lokasi"></div> </label>
             </div>
             <input type="hidden" name="id" value="<?= $id ?>" />
-        <!-- </div> -->
 
-        <!-- detail job order -->
-        <!-- <div class="card-body col" id="bookmark_table_detail"> -->
+            <!-- detail job order -->
             <div class="row">
                 <label class="col-4 col-form-label">Detail Armada</label>
                 <div class="col">
@@ -145,10 +143,12 @@
                 url: '<?= site_url() ?>t30_job_order/get_by_id_json_', // get the route value
                 data: {id: $(this).val()}, // our serialized array data for server side
                 success: function (response) {//once the request successfully process to the server side it will return result here
-                	$('#tanggal_job_order').html(response[0].tanggal_job_order)
+                    var date = response[0].tanggal_job_order
+                    $('#tanggal_job_order').html(date.split("-").reverse().join("-"))
                 	$('#customer').html(response[0].customer_nama)
                 	$('#shipper').html(response[0].shipper_nama)
-                    $('#tanggal_muat').html(response[0].tanggal_muat)
+                    var date = response[0].tanggal_muat
+                    $('#tanggal_muat').html(date.split("-").reverse().join("-"))
                     $('#lokasi').html(response[0].lokasi_nama)
                     $('#table_detail').empty()
                     var no = 0
@@ -160,7 +160,6 @@
                                 <td>`+ ++no +`</td>
                                 <td>`+value.merk+' - '+value.nomor_polisi+`</td>
                                 <td>`+value.nomor_container+`</td>
-
                             </tr>
                             `
                         )

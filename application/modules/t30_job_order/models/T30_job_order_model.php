@@ -79,7 +79,6 @@ class T30_job_order_model extends CI_Model
         $this->db->join('t00_lokasi', 't00_lokasi.id = '.$this->table.'.lokasi');
         $this->db->join('t31_job_order_detail', 't31_job_order_detail.job_order = '.$this->table.'.id', 'left');
         $this->db->join('t04_armada', 't04_armada.id = t31_job_order_detail.armada');
-        // return json_encode($this->db->get($this->table)->row());
         return json_encode($this->db->get()->result());
     }
 

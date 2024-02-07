@@ -103,7 +103,12 @@
                                 <td><input type="text" class="form-control" name="nomor_container[]"></td>
                                 <td>&nbsp;</td>
                             </tr>
-                            <?php } else { ?>
+                        <?php } elseif ($this->uri->segment(2) == 'create_action') { ?>
+                            <!-- <?php foreach($armada as $key => $value) { ?>
+                                <?= $key ?>
+                                <br>
+                            <?php } ?> -->
+                        <?php } else { ?>
 
                             <!-- update -->
                             <?php foreach($all_job_order_detail as $key => $detail) { ?>

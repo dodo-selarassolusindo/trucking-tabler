@@ -237,6 +237,7 @@ class T30_job_order extends CI_Controller
         $this->form_validation->set_rules('tanggal_muat', 'tanggal muat', 'trim|required');
         $this->form_validation->set_rules('lokasi', 'lokasi', 'trim|required');
         $this->form_validation->set_rules('id', 'id', 'trim');
+        $this->form_validation->set_rules('armada[]', 'armada', 'trim|required');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
