@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2024 at 10:44 AM
+-- Generation Time: Feb 07, 2024 at 04:38 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -7125,7 +7125,8 @@ CREATE TABLE `t02_shipper` (
 --
 
 INSERT INTO `t02_shipper` (`id`, `kode`, `nama`, `alamat`, `kota`, `contact_person`, `telepon`) VALUES
-(1, 'KTI', 'PT KUTAI TIMBER INDONESIA', 'PROBOLINGGO', 7001, '-', '-');
+(1, 'KTI', 'PT KUTAI TIMBER INDONESIA', 'PROBOLINGGO', 7001, '-', '-'),
+(2, 'MEKABOX', 'MEKABOX', 'SURABAYA', 6995, '-', '-');
 
 -- --------------------------------------------------------
 
@@ -7271,7 +7272,8 @@ CREATE TABLE `t30_job_order` (
 --
 
 INSERT INTO `t30_job_order` (`id`, `tanggal_job_order`, `nomor`, `customer`, `shipper`, `tanggal_muat`, `lokasi`) VALUES
-(3, '2023-10-01', 'JO2310001', 1, 1, '2023-10-01', 7001);
+(3, '2023-10-01', 'JO2310001', 1, 1, '2023-10-01', 7001),
+(4, '2023-11-01', 'JO2311001', 2, 2, '2023-11-01', 6995);
 
 -- --------------------------------------------------------
 
@@ -7294,7 +7296,34 @@ INSERT INTO `t31_job_order_detail` (`id`, `job_order`, `armada`, `nomor_containe
 (19, 3, 5, 'TAKU 2344356'),
 (20, 3, 14, 'TAKU 2334231'),
 (21, 3, 4, 'TAKU 2357950'),
-(22, 3, 7, 'TAKU 2311753');
+(22, 3, 7, 'TAKU 2311753'),
+(23, 4, 11, '-'),
+(24, 4, 12, '-'),
+(25, 4, 17, '-'),
+(26, 4, 19, '-'),
+(27, 4, 20, '-'),
+(28, 4, 27, '-'),
+(29, 4, 31, '-');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t32_cost_sheet_detail`
+--
+
+CREATE TABLE `t32_cost_sheet_detail` (
+  `id` int(11) NOT NULL,
+  `job_order` int(11) NOT NULL,
+  `vendor` int(11) NOT NULL,
+  `cost` int(11) NOT NULL,
+  `armada` int(11) NOT NULL,
+  `keterangan` text NOT NULL,
+  `qty` double NOT NULL,
+  `nilai` double NOT NULL,
+  `nominal` double NOT NULL,
+  `nomor_ivr` varchar(25) DEFAULT NULL,
+  `is_hapus` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci COMMENT='cost sheet detail';
 
 -- --------------------------------------------------------
 
@@ -7329,7 +7358,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$10$i96MpgCRaiZt079TqryusONjEy0A9R6XHqXp/JoeU3C4rujLFa5Qe', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1706855629, 1, 'Administrator', '-', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$10$i96MpgCRaiZt079TqryusONjEy0A9R6XHqXp/JoeU3C4rujLFa5Qe', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1707188397, 1, 'Administrator', '-', 'ADMIN', '0'),
 (2, '::1', NULL, '$2y$10$qyZgRn9irZDDmUphXlFHx.zMdFwFQkt0xTPtkfReOLmiqcrzxFmR.', 'budwir@budwir.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1706590074, 1706677375, 1, 'Budi', 'Wiranto', 'danar hadi', '1234');
 
 -- --------------------------------------------------------
@@ -7424,6 +7453,12 @@ ALTER TABLE `t31_job_order_detail`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `t32_cost_sheet_detail`
+--
+ALTER TABLE `t32_cost_sheet_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -7474,7 +7509,7 @@ ALTER TABLE `t01_customer`
 -- AUTO_INCREMENT for table `t02_shipper`
 --
 ALTER TABLE `t02_shipper`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `t03_vendor`
@@ -7504,13 +7539,19 @@ ALTER TABLE `t06_cost`
 -- AUTO_INCREMENT for table `t30_job_order`
 --
 ALTER TABLE `t30_job_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `t31_job_order_detail`
 --
 ALTER TABLE `t31_job_order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `t32_cost_sheet_detail`
+--
+ALTER TABLE `t32_cost_sheet_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
